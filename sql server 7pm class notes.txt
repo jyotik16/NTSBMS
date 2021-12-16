@@ -1,0 +1,3490 @@
+26-OCT-21				SQL SERVER
+                                        ***********
+
+	DESIGN			    DEVELOPMENT			ADMINISTRATION
+
+       ER MODEL			    creating tables		installation of sql server
+       NORMALIZATION 		    creating views              creating database
+				    creating synonyms           creating logins
+				    creating sequences          db backup & restore
+				    creating procedures         db export & import
+				    creating functions          db mirroring & replication
+				    creating triggers           db upgradation & migration
+				    writing queries             performance tuning 
+
+ 
+  
+ Database :-
+ -----------
+
+ => a database is a organized collection of interrelated data for example a univ db stores data 
+    related to students,courses,faculty etc and a bank db stores data related to customers,
+    transactions and loans.
+
+ Types of Databases :-
+ -----------------------
+
+  1 OLTP DB (online transaction processing)
+  2 OLAP DB (online analytical processing)
+
+ => organizations uses OLTP db for storing day-to-day transactions and OLAP db for analysis.
+
+ => OLTP db is for runing business and OLAP db for to analyze business.
+
+ => day-to-day operations on db includes 
+
+    C  create
+    R  read
+    U  update
+    D  delete
+
+ DBMS :- (Database Management System)
+ ------------------------------------
+
+ => it is a software used to create and to manage database.
+ => DBMS acts as an interface between user and database.
+ 
+ Evolution of DBMS :- 
+ --------------------
+ 
+  1960			FMS   (File Management System)  
+  
+  1970			HDBMS (Hierarchical dbms )
+			NDBMS (Network dbms)
+
+  1980			RDBMS (Relational dbms)
+
+  1990			ORDBMS (Object relational dbms)
+
+ 
+ RDBMS :-
+ --------
+
+ => RDBMS concepts introduced by E.F.CODD
+ => according to E.F.CODD in databases data must be organized in tables i.e rows and columns 
+ 
+  CUSTOMERS
+  CID	NAME	AGE	CITY  => columns/fields/attributes 
+  10	SACHIN  47	MUM
+  11	VIRAT	28	DEL
+  12	VIJAY	35	HYD   => row/record/tuple
+  
+        DATABASE  =   COLLECTION OF TABLES
+        TABLE     =   COLLECTION OF ROWS & COLS
+        ROW       =   COLLECTION OF FIELD VALUES
+        COLUMN    =   COLLECTION OF VALUES ASSIGNED TO ONE FIELD
+
+ => every table must contain a primary key to uniquely identify the records 
+
+     Ex :-  ACCNO,EMPID,CUSTID,AADHARNO,PANNO,VOTERID
+ 
+ RDBMS softwares :- 
+ ------------------
+
+ ORACLE		 from oracle corp
+ SQL SERVER      from microsoft
+ DB2             from IBM
+ MYSQL           from oracle corp (open source)
+ POSTGRESQL      from postgresql forum development (open source)
+
+ 28-OCT-21
+
+ RDBMS features :- 
+ -----------------
+
+ 1 easy to access and manipulate data
+ 2 less redundency (duplication of data)
+ 3 more security 
+ 4 supports data integrity i.e. data quality
+ 5 supports data sharing
+ 6 supports transactions 
+
+ ORDBMS :- (Object Relational Database Management System)
+ --------------------------------------------------------
+
+ => ORDBMS is combination of RDBMS & OOPS 
+
+        ORDBMS = RDBMS + OOPS (reusability)
+
+ => RDBMS doesn't support reusability but ORDBMS supports reusability
+
+ ordbms softwares :- 
+ -------------------
+
+ SQL SERVER
+ ORACLE
+ 
+NoSQL databases :- 
+-----------------
+
+MongoDB
+cassandra
+
+SUMMARY :- 
+
+ what is db ?
+ what is dbms ?
+ what is rdbms ?
+ what is ordbms ?
+
+--------------------------------------------------------------------------------------------------------
+
+				SQL SERVER
+                                ***********
+
+ => SQL SERVER is basically a rdbms product from Microsoft used to create and to manage database.
+ => SQL SERVER can be used for db development and administration.
+ 
+versions of sql server :-
+-------------------------
+
+  version                     year
+
+  SQL SERVER 1.1              1991
+  SQL SERVER 4.2              1993
+  SQL SERVER 6.0              1995
+  SQL SERVER 6.5              1996
+  SQL SERVER 7.0              1998
+  SQL SERVER 2000             2000
+  SQL SERVER 2005             2005
+  SQL SERVER 2008             2008
+  SQL SERVER 2012             2012
+  SQL SERVER 2014             2014
+  SQL SERVER 2016             2016   
+  SQL SERVER 2017             2017
+  SQL SERVER 2019             2019
+
+ sql server 2016 :- 
+
+  1 polybase
+  2 json
+  3 temporal table to save data changes.
+  4 dynamic data masking and row level security
+  
+ sql server 2017 :- 
+
+  1 identity cache
+  2 New String functions
+  3 Automatic Tuning
+
+ sql server 2019 :- 
+
+1  Read, write, and process big data from Transact-SQL
+2  Easily combine and analyze high-value relational data with high-volume big data.
+3  Query external data sources.
+4  Store big data in HDFS managed by SQL Server.
+5  Query data from multiple external data sources through the cluster.
+
+ CLIENT/SERVER Architecture :- 
+ -----------------------------
+
+ 1 SERVER
+ 2 CLIENT
+
+ => SERVER is a system where sql server is installed and running
+ => inside the server sql server manages DB.
+ => CLIENT is a system where users 
+
+   1 connects to server
+   2 submit requests to server
+   3 recieves response from server 
+
+
+29-OCT-21
+
+SQL SERVER :-
+
+download
+
+https://www.microsoft.com/en-in/sql-server/sql-server-downloads
+
+step by step installation
+
+https://computingforgeeks.com/install-sql-server-developer-edition-on-windows-server/
+
+SSMS :- 
+
+https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15
+
+how to connect to sql server :-
+-------------------------------
+
+=> to connect to sql server open ssms and enter following details 
+
+    SERVER TYPE  	:-  Database Engine
+    SERVER NAME  	:-  LAPTOP-ODHIIKLC
+    AUTHENTICATION 	:-  SQL SERVER AUTHENTICATION
+    LOGIN		:-  SA (SYSTEM ADMIN)
+    PASSWORD 		:-  123
+
+ => CLICK CONNECT button
+
+       USER---SSMS------------------------------------SQL SERVER
+
+CREATING DATABASE IN SQL SERVER :- 
+ ----------------------------------
+
+ => to create database in sql server  in object explorer select 
+
+         Databases => New Database 
+
+ =>    Enter Database Name :-  DB7PM
+              
+ =>    Click OK
+
+ =>  a Database is created with following two files 
+
+       1 DATA FILE (.MDF) (master data file)  => data file stores data
+       2 LOG FILE  (.LDF) (log data file)     => log file stores operations
+
+
+    NAME	TYPE	INITIAL SIZE    AUTO GROWTH     PATH
+    DB7PM       DATA    8MB             64MB            C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\
+    DB7PM_LOG   LOG     8MB             64MB            C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\  
+
+
+ COMMAND TO CREATE NEW DATABSE  :- 
+ --------------------------------
+
+ => open master database under system databases and execute the following command
+
+ CREATE DATABASE [DB7PM]
+ ON  PRIMARY 
+ ( NAME = N'DB10', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\DB10.mdf' , SIZE = 8192KB , FILEGROWTH = 65536KB )
+ LOG ON 
+ ( NAME = N'DB10_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\DB10_log.ldf' , SIZE = 8192KB , FILEGROWTH = 65536KB )
+
+   
+  USER----SSMS----------------------SQL SERVER----DB7PM
+ 
+   
+    SQL :- 
+    -------
+
+    => SQL stands for structured query language
+    => language used to communicate with sql server
+    => user communicates with sql server by sending commands called queries
+    => a query is a command/instruction submitted to sql server to perform some operation over db
+    => sql is originally introduced by IBM and initial name of this language was SEQUEL and later
+       it is renamed to SQL 
+    => sql is common to all relational databases 
+
+       SQL SERVER	 ORACLE	      MYSQL	  POSTGRESQL	 DB2       
+           SQL		   SQL	       SQL          SQL           SQL
+30-OCT-21
+
+   => based on operations over db sql is categorized into following sublanguages
+
+      DDL (DATA DEFINITION LANGUAGE)
+      DML (DATA MANIPULATION LANGUAGE)
+      DRL (DATA RETRIEVAL LANGUAGE)
+      TCL (TRANSACTION CONTROL LANGUAGE)
+      DCL (DATA CONTROL LANGUAGE)
+
+ 
+				  SQL
+
+	DDL	 	DML	  DRL		TCL		DCL
+        create		insert	  select	commit		grant
+        alter		update			rollback	revoke
+        drop		delete			save transaction
+        truncate	merge
+   
+  
+01-nov-21
+
+  Datatypes in SQL SERVER :- 
+  --------------------------
+ 
+ => a datatype specifies 
+
+   1 type of the data allowed in a column
+   2 how much memory allocated for column
+
+  					DATATYPES
+
+         CHAR		     INTEGER	  FLOAT	       CURRENCY       DATE        BINARY
+			     
+  ASCII		UNICODE      tinyint	  decimal      smallmoney     date	  binary	
+                             smallint                  money          time        varbinary
+  char		nchar        int                                      datetime    varbinary(max)
+  varchar       nvarchar     bigint
+  varchar(max)  nvarchar(max)
+
+
+ char(size) :-
+ --------------
+
+ => allows character data upto 8000 chars
+ => recommended for fixed length char columns 
+
+    ex :-  NAME   CHAR(10)
+
+           sachin----
+                    wasted
+    
+           ravi------
+                   wasted 
+
+ => in char datatype extra bytes are wasted , so char is not recommended for variable length fileds
+    and char is recommended for fixed length fields.
+
+       ex :-    GENDER   CHAR(1)
+
+                M
+                F
+
+                STATE_CODE  CHAR(2)
+
+                AP
+                TS
+                MH
+                UP
+
+                COUNTRY_CODE  CHAR(3)
+
+                IND
+                USA
+                
+ VARCHAR(SIZE) :-
+ -----------------
+
+ => allows character data upto 8000 chars
+ => recommended for variable length fields
+
+   ex :-  NAME   VARCHAR(10)
+
+          sachin----
+                   released
+
+          ravi------
+                  released
+
+  => in varchar datatype extra bytes are released         
+
+ VARCHAR(MAX) :- 
+ ---------------
+
+ => allows character data upto 2GB
+
+         TEXT   VARCHAR(MAX)
+
+
+ NOTE :- CHAR/VARCHAR/VARCHAR(MAX) allows ascii characters that includes a-z,A-Z,0-9 and special chars
+
+      
+          PANNO      CHAR(10)
+          VEHNO      CHAR(10)
+          EMAIL      VARCHAR(30)
+          PASSWORD   VARCHAR(10)
+
+NCHAR/NVARCHAR/NVARCHAR(MAX) :- 
+-------------------------------
+
+=> allows unicode characters that includes all ascii chars and also characters belongs
+   to different languages like japanese,korean,arabic etc.
+
+
+INTEGER types :-
+-----------------
+
+=> allows whole numbers i.e. numbers without decimal part.
+
+      
+  TINYINT	 1 BYTE			 0  TO 255
+  SMALLINT	 2 BYTES		-32768 TO 32767
+  INT		 4 BYTES		 2^31 (-2,147,483,648) to 2^31-1 (2,147,483,647)
+  BIGINT	 8 BYTES 		-2^63 (-9,223,372,036,854,775,808) to 2^63-1 (9,223,372,036,854,775,807)
+
+  ex :-  age  		TINYINT
+         empid		SMALLINT
+         aadharno	BIGINT
+         
+ DECIMAL(P,S) :- 
+ ---------------
+
+ => allows real numbers i.e. numbers with decimal part 
+
+ P => precision  => total no of digits allowed 
+
+ S => scale      => no of digits allowed after decimal 
+
+  ex :-  SALARY   DECIMAL(7,2)
+
+         5000  
+         5000.50
+        50000.50   
+       500000.50    => NOT ALLOWED 
+
+02-nov-21
+
+ currency types :- 
+ ------------------
+
+ => used for fields related to money
+
+          
+  1 SMALLMONEY		4 BYTES	 	−214478.3648	 TO   +214478.3647
+  2 MONEY 		8 BYTES       	−922,337, 203, 685,477.5808  TO	+922,337, 203, 685,477.5807  
+           
+        EX :  SALARY  SMALLMONEY
+              BAL     MONEY
+
+ DATE & TIME :- 
+ -------------
+
+1  DATE         => allows only date
+2  TIME         => allows only time
+3  DATETIME     => allows date & time 
+
+=> default date format in sql server is yyyy-mm-dd
+
+       ex :-  HIREDATE     DATE
+ 
+              2021-11-02
+ 
+
+              LOGIN	   TIME
+
+              10:00:00
+
+              TXN_DATE     DATETIME
+
+              2021-11-02 10:00:00  
+
+
+ Binary types :-
+-----------------
+
+ => binary types allows binary data that includes audio,video,images 
+
+ 1 binary
+ 2 varbinary
+ 3 varbinary(max)
+
+ binary :- 
+ ---------
+
+ => allows binary data upto 8000 bytes
+ => recommended for fixed length binary fields
+ => extra bytes are wasted 
+
+         photo  binary(1000)
+
+varbinary :-
+-------------
+
+ => allows binary data upto 8000 bytes
+ => recommended for variable length binary fields
+ => extra bytes are released
+
+        photo   varbinary(1000)
+
+varbinary(max) :-
+------------------
+
+ => allows binary data upto 2GB
+ => recommended for variable length binary fields
+ => extra bytes are released
+      
+------------------------------------------------------------------------------------------------------
+
+CREATING TABLES IN SQL SERVER DB :-
+-----------------------------------
+
+CREATE TABLE <tabname>
+(
+ COLNAME  DATATYPE(SIZE),
+ COLNAME  DATATYPE(SIZE),
+ COLNAME  DATATYPE(SIZE),
+ --------------------
+ )
+
+
+Rules :- 
+--------
+
+ 1 tabname should start with alphabet
+ 2 tabname should not contain spaces & special chars but allows _,#,$
+ 3 tabname can be upto 128 chars
+ 4 table can have upto 1024 cols
+ 5 table can have unlimited rows 
+
+      emp123   	 valid
+      123emp     invalid
+      emp 123    invalid
+      emp*123    invalid
+      emp_123    valid
+
+ Example :- 
+
+ => create table with following structure
+
+   EMP
+   EMPID    ENAME   JOB    SAL     HIREDATE 
+
+  
+   CREATE TABLE emp
+   (
+     empid    SMALLINT,
+     ename    VARCHAR(10),
+     job      VARCHAR(10),
+     sal      SMALLMONEY,
+     hiredate DATE
+   )
+
+=> above command created table structure/definition/metadata that includes columns,datatype & size
+ 
+03-nov-21
+
+ SP_HELP :-  (SP => stored procedure)
+-----------
+
+ => command used to see the structure of the table
+
+    syn :-  SP_HELP  <tabname>
+
+    ex :-  SP_HELP emp
+
+	   empid    SMALLINT 
+     	   ename    VARCHAR(10) 
+     	   job      VARCHAR(10) 
+     	   sal      SMALLMONEY 
+     	   hiredate DATE
+
+ INSERTING DATA INTO TABLE :- 
+ -----------------------------
+
+ => "INSERT" command is used to insert data into table.
+ =>  using INSERT command we can insert 
+
+  1 single row
+  2 multiple rows 
+
+ INSERTING SINGLE ROW :- 
+ ------------------------
+
+  syn :- INSERT INTO <tabname> VALUES(v1,v2,v3,-----)
+   
+  ex :-  INSERT INTO emp VALUES(100,'sachin','clerk',4000,'2021-11-03')
+         INSERT INTO emp VALUES(101,'kumar','analyst',9000,GETDATE())
+
+ INSERTING MULTIPLE ROWS :-
+ -------------------------
+
+  INSERT INTO emp VALUES(102,'rahul','manager',6000,'2020-05-10'),
+                        (103,'david','clerk',5000,'2020-10-05')
+
+
+ INSERTING NULLS :- 
+ ------------------
+
+ => a null means blank or empty 
+ => it is not equal to 0 or space
+ => nulls can be inserted in two ways 
+
+ method 1 :- 
+
+ INSERT INTO emp VALUES(104,'phani',NULL,NULL,getdate())
+
+ method 2 :- 
+
+ INSERT INTO emp(empid,ename,hiredate) VALUES(105,'venkat','2019-06-15')
+
+ => remaining fields job,sal filled with NULLs.
+
+ 05-nov-21
+
+ Displaying Data :-
+ -------------------
+
+ => "select" command is used to display data from table.
+ => using select command we can display all rows or all columns
+ => we can display specific rows and columns
+ 
+    syn :- SELECT columns/* FROM tabname [WHERE cond] ;
+
+                  *  => all columns
+
+    ex :- display all the data from emp table ?
+
+         SELECT * FROM emp 
+         
+         display employee names and salaries ?
+
+         SELECT ename,sal FROM emp 
+
+         display employee names and hiredate ?
+
+         SELECT ename,hiredate FROM emp 
+  
+ Operators in SQL SERVER :- 
+ --------------------------
+
+ Arithmetic Operators  =>  +  -   *    /    %
+ Relational Operators  =>  >  >=  <   <=   =   <>
+ Logical Operators     =>  AND  OR  NOT     
+ Special Operators     =>  BETWEEN   IN   LIKE   IS   ANY  ALL  EXISTS  PIVOT
+ Set Operators         =>  UNION  UNION ALL  INTERSECT  EXCEPT
+
+ WHERE clause :-
+ ---------------
+
+ => use WHERE clause to get specific row/rows from table based on a condition
+   
+    syn :- SELECT columns
+           FROM tabname
+           WHERE condition ;
+
+   condition :-
+   ------------
+
+         COLNAME OP  VALUE 
+
+ => OP must be any relational operator like >  >=  <  <=  =  <>
+ => if cond=true row is selected , if cond=false row is not selected  
+ 
+  ex :- display employee details whose empid=103 ?
+
+        SELECT * FROM emp WHERE empid=103
+  
+        display employee details whose name=venkat ?
+
+        SELECT * FROM emp WHERE ename='venkat' 
+       
+        display employee details earning more than 5000 ?
+
+          SELECT * FROM emp WHERE sal>5000
+
+        display employee list joined after 2020 ?
+
+        SELECT * FROM emp WHERE hiredate > '2020-12-31' 
+
+        display employee list joined before 2020 ?
+
+        SELECT * FROM emp WHERE hiredate < '2020-01-01' 
+ 
+ compound condition :-
+ ---------------------
+
+ => multiple conditions combined with AND / OR operators is called compound condition
+
+           COND1   AND     COND2     RESULT
+            T               T           T
+            T               F           F
+            F               T           F
+            F               F           F
+
+           COND1   OR   COND2        RESULT
+            T            T            T
+            T            F            T
+            F            T            T
+            F            F            F
+
+
+ =>  display employees working as clerk,manager ?
+
+      SELECT * FROM emp WHERE job='clerk','manager'   => ERROR
+     
+      SELECT * FROM emp WHERE job='clerk' OR job='manager' ; 
+ 
+ =>  display employees whose empid=100,103,105 ? 
+
+     SELECT * FROM emp WHERE empid=100 OR empid=103 OR empid=105 
+
+ =>  display employees working as clerk and earning more than 4000 ?
+
+     SELECT * FROM emp WHERE job='clerk' AND sal>4000 ;
+
+ => display employees earning more than 5000 and less than 10000 ?
+
+    SELECT * FROM emp WHERE sal>5000  AND  sal<10000
+
+ => display employees joined in 2020 year ?
+
+     SELECT * FROM emp WHERE hiredate >= '2020-01-01' AND hiredate <= '2020-12-31'
+
+ scenario :- 
+
+ STUDENT
+ SNO  SNAME S1   S2  S3
+ 1     A    80   90  70
+ 2     B    30   60  50
+
+ => display list of students who are passed ?
+ 
+    SELECT * FROM student WHERE s1>=35  AND s2>=35  AND  s3>=35 
+
+ => display list of students who are failed ? 
+ 
+    SELECT * FROM student WHERE s1<35 OR  s2<35 OR  s3<35 
+
+
+ IN operator :- 
+ --------------
+
+=> use IN operator when comparision based on list of values 
+=> use IN operator when "=" comparision with multiple values
+
+  WHERE COLNAME IN (V1,V2,V3,----)     (COLNAME=V1 OR COLNAME=V2 OR COLNAME=V3)
+  WHERE COLNAME NOT IN (V1,V2,V3,--)
+  
+ => display employees working as clerk,manager ? 
+
+    SELECT * FROM emp WHERE job IN ('clerk','manager')   (job='clerk' or job='manager')
+
+ => display employees whose empid=100,103,105 ?
+
+    SELECT * FROM emp WHERE empid IN (100,103,105)
+
+ => display employees not  working as clerk,manager ?
+
+    SELECT * FROM emp WHERE job NOT IN ('clerk','manager') 
+
+BETWEEN operator :-
+--------------------
+
+ => use BETWEEN operator for range comparision
+
+    WHERE COLNAME BETWEEN V1 AND V2   (COL>=V1 AND COL<=V2)
+    WHERE COLNAME NOT BETWEEN V1 AND V2 
+
+ => display employees earning between 5000 and 10000 ?
+ 
+    SELECT * FROM emp WHERE sal BETWEEN 5000 AND 10000 
+
+ => display employees joined in 2020 year ?
+
+    SELECT *
+    FROM emp 
+    WHERE hiredate BETWEEN '2020-01-01' AND '2020-12-31' 
+
+ => display employees not joined in 2020 ?
+
+    SELECT *
+    FROM emp 
+    WHERE hiredate NOT BETWEEN '2020-01-01' AND '2020-12-31' 
+
+=> display employees working as clerk,manager and earning between
+   5000 and 10000 and joined in 2021 year ?
+
+  SELECT *
+   FROM emp
+   WHERE job IN ('CLERK','MANAGER')
+         AND
+         sal BETWEEN 5000 AND 10000
+         AND
+         hiredate BETWEEN '2020-01-01' AND '2020-12-31' 
+
+
+LIKE operator :- 
+----------------
+
+=> use LIKE opertor for pattern comparision
+
+      WHERE colname LIKE 'pattern'
+      WHERE colname NOT LIKE 'pattern' 
+
+=> pattern consists of alphabets,digits,wildcard characters.
+
+ wildcard characters :- 
+ -----------------------
+
+   %     => zero or many chars
+   _     => exactly 1 char 
+
+=> display employee list name starts with 's' ?
+
+  SELECT * 
+  FROM emp
+  WHERE ename LIKE 's%'   
+
+=> display employee name ends with 's' ?
+
+  SELECT * 
+  FROM emp
+  WHERE ename LIKE '%s'
+
+=> display employees name contains 's' ?
+
+  SELECT * 
+  FROM emp
+  WHERE ename LIKE '%s%' 
+
+ => display employees where 'a' is then 3rd char in their name ?
+
+  SELECT * 
+  FROM emp
+  WHERE ename LIKE '__a%' 
+
+ => display employees where 'a' is then 3rd char from last ?
+
+  SELECT * 
+  FROM emp
+  WHERE ename LIKE '%a__' 
+
+=> display employees name contains 4 chars ?
+
+  SELECT * 
+  FROM emp
+  WHERE ename LIKE '____' 
+
+=> display employees joined in jan month ? 
+
+   YYYY-MM-DD
+
+ SELECT *
+ FROM emp
+ WHERE hiredate LIKE '_____01___'
+
+=> display employees joined in 2020 year ?
+
+ SELECT *
+ FROM emp
+ WHERE hiredate LIKE '2020%' 
+
+10-nov-81
+
+=> display employees name starts with  d,k,s,v ?
+
+   SELECT * FROM emp WHERE ename LIKE 'd%'
+                           OR
+                           ename LIKE'k%'
+                           OR
+                           ename LIKE 's%'
+                           OR
+                           ename LIKE 'v%'
+                          
+  
+ SELECT * FROM emp WHERE ename LIKE '[dksv]%' 
+ 
+ => display employees where name  starts between 'a' and 'p' ?
+
+   SELECT * FROM emp WHERE ename LIKE '[a-p]%'
+
+Question :-
+------------
+
+ SELECT * FROM emp WHERE job IN ('clerk','%man%')
+
+ A  ERROR
+ B  returns no rows
+ C  returns only clerk
+ D  returns clerk,manager
+
+ ans :- c
+
+ SELECT * FROM emp WHERE job='clerk' OR job LIKE '%man%'
+
+ ANS :- D
+ 
+IS operator :-
+--------------
+
+=> use IS operator for NULL comparision
+
+     WHERE COLNAME IS NULL
+     WHERE COLNAME IS NOT NULL
+
+=> display employees not earning salary ?
+
+   SELECT * FROM emp WHERE sal IS NULL 
+
+=> display employees earning salary ? 
+
+   SELECT * FROM emp WHERE sal IS NOT NULL
+ 
+summary :-
+-----------
+
+ WHERE COL IN (V1,V2,V3,---)
+ WHERE COL BETWEEN V1 AND V2
+ WHERE COL LIKE 'PATTERN'
+ WHERE COL IS NULL
+
+ ORDER BY clause :- 
+ ------------------
+
+ => ORDER BY clause is used to sort table data based on one or more columns either in asc or in desc order
+
+    syntax :- SELECT columns
+              FROM tabname
+              [WHERE condition]
+              ORDER BY <colname>  ASC/DESC
+
+  => default sort order is ascending  for descending order specify DESC
+
+  => arrange employee list name wise asc order ?
+
+     SELECT * FROM emp ORDER BY ename ASC 
+ 
+  =>  arrange employee list sal wise desc order ?
+
+      SELECT * FROM emp ORDER BY sal DESC 
+
+   => arrange employee list hiredate wise asc order ?
+
+      SELECT * FROM emp ORDER BY hiredate ASC 
+
+   => arrange employee list dept wise asc and with in dept sal wise desc order ?
+ 
+      SELECT empno,ename,sal,deptno FROM emp ORDER BY deptno ASC,sal DESC 
+
+      1  A   5000  20             5  E  5000 10  
+      2  B   1000  10             2  B  1000 10
+      3  C   4000  30   ------>   4  D  6000 20
+      4  D   6000  20             1  A  5000 20
+      5  E   5000  10             3  C  4000 30
+
+11-nov-21
+
+scenario :- 
+------------
+
+STUDENTS
+sno	sname	m	p	c
+1	A	80	90	70
+2	B	60	50	40
+3	C	90	80	70
+4	D	90	70	80
+
+=> arrange student list avg wise desc,m desc,p desc ?
+
+   SELECT *
+   FROM student
+   ORDER BY (m+p+c)/3  DESC,m DESC,p DESC 
+
+   3	C	90	80	70
+   4	D	90	70	80
+   1	A	80	90	70
+   2	B	60	50	40
+
+ DISTINCT clause :-
+ ------------------
+
+ => DISTINCT clause is used to eliminate duplicates from select query output
+ 
+         DISTINCT col1,col2,-----
+
+
+     SELECT DISTINCT job FROM emp 
+
+     ANALYST
+     CLERK
+     MANAGERS
+     PRESIDENT
+     SALESMAN 
+
+    SELECT DISTINCT deptno FROM emp 
+
+     10 
+     20
+     30 
+
+ TOP clause :- 
+ --------------
+
+ => used to display top N rows from table
+ 
+    SELECT TOP n  colnames/*
+    FROM tabname 
+
+ => display first 5 rows from emp table ?
+
+    SELECT TOP 5 *
+    FROM emp 
+
+ => display top 3 max salaries ?
+
+  SELECT  DISTINCT TOP 3 sal
+  FROM emp 
+  ORDER BY sal DESC 
+
+ DML(Data Manipulation Language) commands :- 
+ ------------------------------------------
+
+ INSERT
+ UPDATE
+ DELETE
+ MERGE 
+
+ => these commands acts on table data
+ => by default sql server runs in auto commit mode i.e. every operations is automatically saved
+ => to stop auto commit execute the following command
+
+          SET IMPLICIT_TRANSACTIONS ON 
+
+ => to save opeations execute commit and to cancel operation execute rollback command
+
+ UPDATE command :- 
+ -----------------
+
+ => command used to modify the table data.
+ => using update command we can update all rows or specific rows
+ => using update command we can update single column or multiple columns 
+
+   syn :- UPDATE tabname
+          SET colname = value , colname = value,-----
+          [WHERE condition] 
+
+   ex :- update all employees comm with 500 ? 
+
+         UPDATE emp SET comm=500
+
+12-nov-21
+
+        update employee comm with 800 whose empno=7369 ?
+
+        UPDATE emp SET comm=800 WHERE empno=7369 
+
+        update employee comm with 500 whose comm = null ?
+ 
+        UPDATE emp SET comm=500 WHERE comm = NULL 
+
+        increment salary by 20% and comm by 10% those working as salesman and joined in 2021 year ?
+
+        UPDATE emp 
+        SET sal=sal+(sal*0.2) , comm = comm + (comm*0.1) 
+        WHERE job='SALESMAN'
+              AND
+              hiredate LIKE '2021%' 
+
+        
+ scenario :- 
+ 
+prodcuts
+prodid  pname  price  category  brand 
+
+increase price of samsung mobiles phones by 10% ?
+
+update products
+set price = price + (price*0.1)
+where category='mobiles'
+      and
+      brand='samsung' 
+
+ 
+ DELETE command :- 
+ -----------------
+
+ => delete command is used to delete row/rows from table.
+ => we can delete all rows or specific rows 
+ 
+  syn :- DELETE FROM tabname [WHERE condition] 
+
+         delete all rows from emp table ?
+
+         DELETE FROM emp 
+
+         delete employees having joined after 2020 year ?
+
+         DELETE FROM emp WHERE hiredate > '2020-12-31'
+    
+ DDL (Data Definition Language) commands :- 
+ -------------------------------------------
+
+ CREATE
+ ALTER
+ DROP
+ TRUNCATE 
+
+ => all DDL commands acts on table definition (structure)
+ 
+ ALTER command :- 
+ ----------------
+
+ => command used to modify table structure
+ => using ALTER we can 
+
+  1 add column
+  2 drop column
+  3 modify column
+        incr/decr field size
+        changing datatype
+
+ Adding New column :- 
+ ----------------------
+
+  ALTER TABLE <tabname>
+       ADD colname DATATYPE(size) 
+
+  => add column emailid to emp table ?
+
+   ALTER TABLE emp 
+      ADD emailid  VARCHAR(20) 
+ 
+ => after adding by default the column is filled with NULLs , use update command to insert 
+    values into  the new column.
+
+	
+	 UPDATE emp SET emailid = 'abc@gmail.com' WHERE empno=7369 
+
+ 13-11-21
+
+  Droping column :- 
+  -----------------
+
+    ALTER TABLE  <tabname>
+        DROP COLUMN COLNAME 
+
+  => drop emailid column from emp table ? 
+
+       ALTER TABLE emp 
+             DROP COLUMN emailid 
+
+  Modifying a column :-
+  ----------------------
+
+  1 incr/decr field size
+  2 changing datatype
+
+   ALTER TABLE <tabname>    
+       ALTER COLUMN colname DATATYPE(size) 
+
+  => increase the size of ename to 20 ?
+
+     ALTER TABLE emp 
+        ALTER COLUMN ename VARCHAR(20)
+
+ => decrease the size of ename to 10 ?
+
+   ALTER TABLE emp 
+        ALTER COLUMN ename VARCHAR(10)
+
+    ALTER TABLE emp 
+        ALTER COLUMN ename VARCHAR(8)
+
+    ALTER TABLE emp 
+        ALTER COLUMN ename VARCHAR(6)
+
+    ALTER TABLE emp 
+        ALTER COLUMN ename VARCHAR(5) => ERROR
+
+ => change sal column datatype to money ?
+
+    ALTER TABLE emp 
+       ALTER COLUMN sal MONEY 
+ 
+ => change column empno datatype to INT ?
+
+    ALTER TABLE emp
+      ALTER COLUMN empno INT 
+
+      ALTER TABLE emp
+           ALTER COLUMN empno TINYINT  => ERROR
+
+  DROP command :- 
+ -----------------
+
+  => command used to drop table from db.
+  => drops table structure along with data because sql server cannot stroe data without structure
+  
+   syn :- DROP TABLE <tabname>
+
+   EX :-  DROP TABLE students  
+
+ TRUNCATE command :- 
+ --------------------
+
+ => command  deletes all the data from table but keeps structure
+ => command will empty the table.
+ => releases memory allocated for table
+  
+    syn :- TRUNCATE TABLE <tabname>
+
+    ex :-  TRUNCATE TABLE emp 
+     
+  DELETE VS TRUNCATE :- 
+  --------------------
+
+	DELETE					TRUNCATE
+
+ 1      DML					DDL 
+
+ 2     can delete specific rows                 can delete only all rows but cannot delete specific row
+
+ 3     where cond can be used                   where cond cannot be used 
+
+ 4     deletes row-by-row                       deletes all rows at a time
+
+ 5     slower                                   faster 
+
+ 6     will not release memory                  releases memory 
+
+ 7     will not reset identity                  will reset identity 
+
+16-nov-21
+
+ SP_RENAME :-
+ ------------
+
+ => command used to change tablename and column name
+ 
+     syn :-  SP_RENAME 'OLD NAME','NEW NAME' (SP -> stored procedure)
+
+     ex :-   rename table EMP to EMPLOYEES ?
+
+             SP_RENAME 'EMP','EMPLOYEES'
+
+             rename column comm to bonus ?
+
+             sp_rename  'employees.comm','bonus'
+
+  IDENTITY :- 
+  ------------
+
+  => identity is used to generate sequence numbers 
+  => identity is used to auto increment column values
+  => identity can be used for columns declared with integer,decimal datatypes 
+
+     syn :-  IDENTITY(SEED,INCR)
+
+     SEED => start
+             optional
+             default 1
+  
+     INCR  => increment
+              optional
+              default 1 
+      
+   Example :- 
+
+     CREATE TABLE cust
+     (
+       cid    INT  IDENTITY(100,1),
+       cname  VARCHAR(10)
+     )
+  
+  INSERT INTO cust(cname) VALUES('A')
+  INSERT INTO cust(cname) VALUES('B')
+  INSERT INTO cust(cname) VALUES('C')
+  INSERT INTO cust(cname) VALUES('D')
+  INSERT INTO cust(cname) VALUES('E')
+
+  SELECT * FROM cust 
+
+  CID	NAME
+  100	A
+  101	B
+  102	C
+  103	D
+  104	E
+
+=> considering identity what is the difference between delete and truncate ?
+
+    delete will not reset identity but truncate will reset identity 
+
+   DELETE								TRUNCATE
+   -------								--------
+
+  SELECT * FROM cust 							SELECT * FROM cust
+
+  CID	NAME								cid	cname
+  100	A								100	A
+  101	B								101	B
+  102	C								102	C
+  103	D								103	D
+  104	E								104	3
+  
+  DELETE FROM cust							TRUNCATE TABLE cust
+  
+  INSERT INTO cust(cname) VALUES('X')					INSERT INTO cust(cname) VALUES('K')
+
+  SELECT * FROM cust 							SELECT * FROM cust
+
+  105	X								100	K
+
+ how to reset identity manually :-
+ ----------------------------------
+
+   syn :-  DBCC CHECKIDENT(tablename,reseed,value)     (DBCC => db consistency check)
+
+   Ex :-  
+
+  SELECT * FROM cust 
+
+  CID	NAME
+  100	A
+  101	B
+  102	C
+  103	D
+  104	E
+
+  DELETE FROM cust 
+
+  DBCC CHECKIDENT('cust',reseed,99)
+
+  INSERT INTO cust(cname) VALUES('K')
+
+  SELECT * FROM cust 
+
+  CID	CNAME
+  100	K
+
+   
+ ----------------------------------------------------------------------------------------------------------
+
+ 17-nov-21
+
+ Built-in Functions in SQL SERVER :- 
+ -----------------------------------
+ 
+=> a function accepts some input performs some calculation and returns one value
+
+ 1 DATE
+ 2 STRING
+ 3 MATHEMATICAL 
+ 4 CONVERSION
+ 5 SPECIAL
+ 6 ANALYTICAL
+ 7 AGGREGATE 
+
+  DATE functions :- 
+  -----------------
+
+1  GETDATE() :- returns current date & time 
+
+  SELECT GETDATE()  => 2021-11-17 19:10:27.857
+
+
+2  DATEPART() :- used to extract part of the date 
+
+          DATEPART(interval,date)
+
+     SELECT DATEPART(yy,GETDATE())   =>   2021
+     SELECT DATEPART(mm,GETDATE())   =>   11
+     SELECT DATEPART(dd,GETDATE())   =>   17
+     SELECT DATEPART(dw,GETDATE())   =>   4  (day of the week)
+
+                                          01  sunday
+
+                                          07  saturday  
+
+     SELECT DATEPART(qq,GETDATE())   =>   4   (quarter)
+
+					 01  jan-mar
+                                         02  apr-jun
+                                         03  jul-sep
+                                         04  oct-dec
+
+     SELECT DATEPART(hh,GETDATE())   => 19 (hour)
+     SELECT DATEPART(mi,GETDATE())   => 20 (minute)
+     SELECT DATEPART(ss,GETDATE())   => 30 (seconds)
+     SELECT DATEPART(dayofyear,GETDATE())  => 321
+     SELECT DATEPART(ww,GETDATE())         => 47 (week of the year)
+     SELECT DATEPART(w,GETDATE())          => 4 (week of the month)
+   
+ => display employees joined in 2018,2020 year ?
+
+    SELECT * FROM emp WHERE DATEPART(yy,hiredate) IN (2018,2020)
+
+ => display employees joined in leap year ?
+
+    SELECT * FROM emp WHERE DATEPART(yy,hiredate)%4=0  
+
+ => display employees joined in jan,apr,dec months ?
+
+   SELECT * FROM emp WHERE DATEPART(mm,hiredate) IN (01,04,12)
+
+ => display employees joined in 2nd quarter of 2021 year ?
+
+     SELECT * FROM emp WHERE DATEPART(yy,hiredate)=2021
+                             AND
+                             DATEPART(qq,hiredate)=2
+
+
+3  DATENAME() :- used to extract part of the date 
+
+     
+			MM		DW	
+		
+	 DATEPART	11		04
+
+
+	 DATENAME	NOVEMBER	WEDNESDAY
+
+
+ => display employees joined on sunday ?
+
+    SELECT * FROM emp WHERE DATENAME(dw,hiredate)='sunday' 
+
+ => display ename and day of the week ?
+
+    SELECT ename,DATENAME(dw,hiredate) FROM emp 
+
+ DATEADD() :- 
+ -----------
+
+ => function used to add/subtract days,months,years to date / from a date.
+
+     DATEADD(interval,int,date)
+
+     SELECT DATEADD(dd,10,GETDATE())  =>  2021-11-27
+     SELECT DATEADD(dd,-10,GETDATE()) =>  2021-11-07
+     SELECT DATEADD(mm,1,GETDATE())   =>  2021-12-17
+     SELECT DATEADD(yy,1,GETDATE())   =>  2022-11-17
+
+   SCENARIO :- 
+   -------------
+
+    GOLD_RATES
+    DATEID	RATE
+    2015-01-01  ?
+    2015-01-02  ?
+
+    2021-11-17  ?
+
+    => display today's gold rate ?
+
+       SELECT RATE FROM gold_rates WHERE dateid = GETDATE()
+
+    => display yesterday's gold rate ?
+
+       SELECT RATE FROM gold_rates WHERE dateid = DATEADD(dd,-1,GETDATE())
+    
+    => display last month same day gold rate ?
+
+     SELECT RATE FROM gold_rates WHERE dateid = DATEADD(mm,-1,GETDATE())
+
+    => display last year same day gold rate ?
+   
+       SELECT RATE FROM gold_rates WHERE dateid = DATEADD(yy,-1,GETDATE())
+      
+18-nov-21
+
+  DATEDIFF() :- 
+  -------------
+
+ => used to find difference between two dates 
+
+       	DATEDIFF(interval,start date,end date)
+
+    SELECT DATEDIFF(yy,'2020-11-18',GETDATE())   => 1
+    SELECT DATEDIFF(mm,'2020-11-18',GETDATE())   => 12
+    SELECT DATEDIFF(dd,'2020-11-18',GETDATE())   => 365
+
+
+  => display ename,experience in years ?
+
+     SELECT ename,DATEDIFF(yy,hiredate,GETDATE())
+     FROM emp 
+ 
+
+  => display ename,experience ?
+                   M years N months 
+    
+     experience = 40 months = 3 years 4 months 
+
+     years = months/12 =  40/12  =  3 
+
+     months = months%12 = 40%12  =  4
+
+     SELECT ename,
+            DATEDIFF(mm,hiredate,GETDATE())/12 as years,
+            DATEDIFF(mm,hiredate,GETDATE())%12 as months
+     FROM emp 
+
+ EOMONTH() :- 
+ -----------
+
+ => returns last day of the month
+
+     EOMONTH(date,int)
+
+   
+  SELECT EOMONTH(GETDATE(),0)    =>  2021-11-30
+  SELECT EOMONTH(GETDATE(),1)    =>  2021-12-31
+  SELECT EOMONTH(GETDATE(),-1)   =>  2021-10-31
+
+ Assignment :- 
+ --------------
+
+  1 display next month first day ?
+  2 display current month first day ?
+  3 display next year first day ?
+  4 display current year first day ?
+
+ STRING functions :-
+ -------------------
+
+ UPPER() :- converts string to uppercase 
+
+   UPPER(arg)
+
+  SELECT UPPER('hello')  => HELLO
+
+ LOWER() :- converts string to lowercase 
+
+   LOWER(arg) 
+
+ SELECT LOWER('HELLO')   => hello
+
+ => display EMPNO,ENAME,SAL ? display names in lowercase ? 
+
+    SELECT empno,LOWER(ename),sal FROM emp 
+
+ => convert names to lowercase in table ? 
+
+    UPDATE emp SET ename=LOWER(ename)
+
+ LEN() :-   returns string length i.e. no of characters 
+ --------
+
+     LEN(string) 
+
+  SELECT LEN('hello welcome')  => 13
+  
+ => display employees name contains 5 chars ?
+
+    SELECT * FROM emp WHERE ename LIKE '_____'
+
+    SELECT * FROM emp WHERE LEN(ename)=5 
+
+ LEFT() :- 
+ --------
+
+ => used to extract part of the string starting from left 
+
+    LEFT(string,no of chars)
+
+  
+ SELECT LEFT('hello welcome',5)   =>  hello
+
+ RIGHT() :- 
+ -----------
+
+ => used to extract part of the string starting from right
+
+      RIGHT(string,no of chars)
+
+  SELECT RIGHT('hello welcome',4)   =>  come
+
+
+ => display employees name starts  with 's' ?
+
+    SELECT * FROM emp WHERE ename LIKE 's%' 
+
+    SELECT * FROM emp WHERE LEFT(ename,1)='s' 
+ 
+19-nov-21
+
+ => display employees name ends with 's' ?
+
+    SELECT * FROM emp WHERE ename LIKE '%s'
+
+    SELECT * FROM emp WHERE RIGHT(ename,1)='s'
+
+ => display employees name starts with and ends with same char ?
+
+     SELECT * FROM emp WHERE ename LIKE 'a%a'
+                             OR
+                             ename LIKE 'b%b'
+                             OR
+                             ename LIKE 'c%c'
+
+    SELECT * FROM emp WHERE LEFT(ename,1) = RIGHT(ename,1) 
+
+  
+ SUBSTRING() :-
+ --------------
+
+ => used to extract part of the string starting from specific position.
+
+       SUBSTRING(string,start,len)
+
+    
+    SELECT SUBSTRING('hello welcome',7,4)   =>  welc
+    SELECT SUBSTRING('hello welcome',10,4)  =>  come
+
+  Assignment :- 
+ -------------
+
+  1  generate emailid for employees ?
+
+     EMPNO	ENAME	 EMAILID
+     7369	smith	 smi736@tcs.com
+     7499       allen    all749@tcs.com
+
+  2 store emailids in db ?
+
+ REPLICATE() :- 
+ --------------
+ 
+=> used to repeat character for given no of times 
+
+    REPLICATE(char,len) 
+
+    SELECT REPLICATE('*',5)   => *****
+
+ => Display ENAME,SAL  ?
+
+                  *****
+                  
+  SELECT ENAME,REPLICATE('*',LEN(SAL)) AS SAL FROM EMP 
+
+ 
+Assignment :-
+-------------
+
+ ACCOUNTS
+ ACCNO    	ACTYPE  BAL
+ 12345678967	S	10000
+
+
+=> your a/c no XXXX8967 debited 1000 ---?
+
+REPLACE() :-
+------------
+
+=> used to replace one string with another string
+
+   REPLACE(str1,str2,str3)
+
+=> in str1, str2 replaced with str3 
+
+  SELECT REPLACE('hello','ell','abc')  => habco
+  SELECT REPLACE('hello','elo','abc')  => hello
+  SELECT REPLACE('hello','ell','')     => ho
+
+TRANSLATE() :-
+-------------
+
+=> used to translate one char to another char
+
+    TRANSLATE(str1,str2,str3)
+
+   SELECT TRANSLATE('hello','elo','abc')  =>  habbc
+
+          e=>a
+          l=>b
+          o=>c 
+
+  => translate function is used to encrypt data i.e. converting plain text to cipher text.      
+
+  => display ENAME,SAL ?
+
+    SELECT ename,TRANSLATE(sal,'0123456789.','$Bm&T*p#@%^') as sal FROM emp 
+
+
+    jones  2975.00   m%#*^$$
+
+
+   Assignment :- 
+
+   => remove all special characters from  '@#he&^ll%o^*$' ? 
+
+ 20-nov-21
+
+ Mathematical Functions :-
+ -------------------------
+
+ ABS() :- returns absolute value 
+
+  SELECT ABS(-10)   => 10
+
+ POWER() :- calculate power of two numbers
+
+  SELECT POWER(3,2)  => 9
+
+ SQRT() :- returns square root
+
+  SELECT SQRT(16)   => 4
+
+ SQUARE() :- returns square of given number
+
+  SELECT SQUARE(5) => 25
+
+ ROUND() :- used to round number to integer or to decimal places based on avg.
+
+     ROUND(number,decimal places)
+
+    38.456789342  => 38
+                     38.45
+                     38.4567
+
+   number > avg  => rounded to highest
+   number < avg  => rounded to lowest
+
+  SELECT ROUND(38.456789,0)   => 38
+
+      38-------------------38.5-------------------------39
+
+ 
+  SELECT ROUND(38.567894,0)  => 39
+ 
+  SELECT ROUND(38.456789,2)  => 38.46
+
+  SELECT ROUND(38.456789,4)  => 38.4568
+
+  SELECT ROUND(386,-2)       => 400
+  
+  300----------------------350-----------------------400
+  
+  SELECT ROUND(386,-1)       => 390
+
+  380----------------------385-----------------------390
+
+   SELECT ROUND(386,-3)     =>  0
+
+   0----------------------500-------------------------1000
+
+
+ => display ENAME,SAL ?  round sal to hundreds ?
+
+   SELECT ename,sal,ROUND(sal,-2) as rndsal FROM emp 
+
+ CEILING() :- rounds number always to highest 
+
+  CEILING(number) 
+
+  SELECT CEILING(3.1)    =>  4
+
+  3----------------------------------------------4
+
+ FLOOR() :- rounds number always to lowest
+
+    FLOOR(number) 
+
+  SELECT FLOOR(3.9)   => 3
+
+ Conversion functions :- 
+ ----------------------
+
+ => used to convert one datatype to another datatype.
+
+    1 CAST
+    2 CONVERT 
+
+ CAST() :- 
+ --------
+
+         CAST(<SOURCE-EXPR> AS <TARGET-TYPE>)
+
+  SELECT CAST(10.5 AS INT)   => 10
+
+  => display  smith earns 800  ?
+
+    SELECT ename + ' earns ' + sal FROM emp  => ERROR
+
+    SELECT ename + ' earns ' + CAST(sal AS VARCHAR) FROM emp 
+
+ => display smith joined on 2020-12-17 ? 
+
+    SELECT ename + ' joined on ' + hiredate FROM emp => ERROR
+
+ CONVERT() :- 
+ ------------
+
+       CONVERT(TARGET-TYPE,SOURCE-EXPR)
+
+   SELECT CONVERT(INT,10.5)  => 
+
+ => Difference between CAST & CONVERT ?
+
+   using CONVERT function we can display dates & numbers in different formats 
+   that is not possible using CAST function.
+ 
+22-nov-21
+
+ Displaying Dates in different formats :-
+ -----------------------------------------
+
+ => to display dates in different formats first we need to convert date to char type
+
+          CONVERT(VARCHAR,SOURCE-DATE,STYLE-NUMBER)
+
+ style numbers :-
+ -----------------
+
+ Without century With century (yyyy)	Standard	Input/Output 
+ 1		 101			U.S.		1 = mm/dd/yy
+							101 = mm/dd/yyyy
+ 2		 102			ANSI		2 = yy.mm.dd
+							102 = yyyy.mm.dd
+ 3		 103			British/French	3 = dd/mm/yy
+							103 = dd/mm/yyyy
+ 4		 104			German		4 = dd.mm.yy
+							104 = dd.mm.yyyy
+ 5		 105			Italian		5 = dd-mm-yy
+							105 = dd-mm-yyyy
+6		 106  			 -		6 = dd mon yy
+							106 = dd mon yyyy
+7		 107  					7 = Mon dd, yy
+							107 = Mon dd, yyyy
+8 		 108			-		hh:mi:ss
+9 		 109 					Default + milliseconds	mon dd yyyy hh:mi:ss:mmmAM (or PM)
+10		 110			USA		10 = mm-dd-yy
+							110 = mm-dd-yyyy
+11		 111			JAPAN		11 = yy/mm/dd
+							111 = yyyy/mm/dd
+12		 112			ISO		12 = yymmdd
+							112 = yyyymmdd
+13 		 113  			Europe 		default + milliseconds	dd mon yyyy hh:mi:ss:mmm (24h)
+14		 114	 				hh:mi:ss:mmm (24h)
+20   		 120  			ODBC canonical	yyyy-mm-dd hh:mi:ss (24h)
+21 		 121			ODBC canonical  default for time, date, datetime2, and datetimeoffset	yyyy-mm-dd hh:mi:ss.mmm (24h)
+22	 				U.S.		mm/dd/yy hh:mi:ss AM (or PM)
+23					ISO8601		yyyy-mm-dd
+		 126 			ISO8601		yyyy-mm-ddThh:mi:ss.mmm (no spaces)
+
+ 
+		 127			ISO8601 	yyyy-MM-ddThh:mm:ss.fffZ (no spaces)
+
+ 
+		 130 			Hijri		dd mon yyyy hh:mi:ss:mmmAM
+
+ 
+ 		 131 			Hijri 		dd/mm/yyyy hh:mi:ss:mmmAM
+
+
+ display empno,ename,hiredate ? display hiredates in mm/dd/yyyy format ?
+
+ SELECT empno,ename,CONVERT(varchar,hiredate,101) 
+ FROM emp 
+
+ MONEY & SMALLMONEY styles :- 
+ ----------------------------
+
+Value	 		Output
+
+0 	 		No commas every three digits to the left of the decimal point, and two digits to the right of the decimal point
+
+1			Commas every three digits to the left of the decimal point, and two digits to the right of the decimal point
+
+2			No commas every three digits to the left of the decimal point, and four digits to the right of the decimal point
+
+
+ display empno,ename,sal ? display salaries with thousand seperator ?
+
+ SELECT empno,ename,CONVERT(varchar,sal,1) as sal
+ from emp 
+
+ 7369	smith	800.00
+ 7499	allen	1,600.00
+ 7521	ward	1,250.00
+ 7566	jones	2,975.00
+
+SPECIAL FUNCTIONS :-
+--------------------
+
+ ISNULL() :- 
+ ----------
+
+ => function used to convert null values 
+
+        ISNULL(arg1,arg2)
+
+   if arg1 = null returns arg2
+   if arg1 <> null returns arg1 only 
+
+ SELECT ISNULL(100,200)    =>  100
+ SELECT ISNULL(NULL,200)   =>  200
+ 
+  Display empno,ename,sal,comm,totsal ?
+ 
+  SELECT empno,ename,sal,comm,sal+comm as totsal 
+  FROM emp 
+ 
+	7369	smith	800.00	NULL	NULL
+	7499	allen	1600.00	300.00	1900.00
+	7521	ward	1250.00	500.00	1750.00
+	7566	jones	2975.00	NULL	NULL
+
+  
+ SELECT empno,ename,sal,comm,sal+ISNULL(comm,0) as totsal 
+ FROM emp 
+
+	7369	smith	800.00	NULL	800.00
+	7499	allen	1600.00	300.00	1900.00
+	7521	ward	1250.00	500.00	1750.00
+	7566	jones	2975.00	NULL	2975.00
+
+ => Display ENAME,SAL,COMM ? if comm = NULL display N/A ? 
+
+    SELECT ENAME,SAL,ISNULL(COMM,'N/A') AS COMM          => ERROR
+    FROM EMP 
+
+    SELECT ENAME,SAL,ISNULL(CAST(COMM AS VARCHAR),'N/A') AS COMM         
+    FROM EMP 
+
+Analytical Functions :-
+------------------------
+
+RANK & DENSE_RANK :-
+--------------------
+
+=> both functions are used to calculate ranks 
+=> ranking is based on some column
+=> for rank functions input data must be sorted 
+ 
+     syn :- RANK() OVER (ORDER BY COLNAME ASC/DESC)
+            DENSE_RANK() OVER (ORDER BY COLNAME ASC/DESC)
+
+ Example :- 
+ 
+ => display ranks of the employees based on sal and highest paid employee should get 1st rank ?
+
+   SELECT empno,ename,sal,
+          RANK() OVER (ORDER BY sal DESC) as rnk
+   FROM emp 
+  
+   SELECT empno,ename,sal,
+          DENSE_RANK() OVER (ORDER BY sal DESC) as rnk
+   FROM emp 
+
+ => difference between rank & dense_rank function ?
+
+    1  rank function generates gaps but dense_rank will not generate gaps 
+    2  in rank functions ranks may not be in sequence but in dense_rank function ranks will always in sequence
+
+23-nov-21
+
+	SAL		RNK		DRNK
+	5000		1		1	
+	4000		2		2
+	3000		3		3
+	3000		3		3	
+	3000		3		3
+	2000		6		4				
+	2000		6		4		
+ 	1000		8		5
+
+=> display ranks of the employees based on sal ? if salaries are same then rank should be based on
+   experience ?
+
+   SELECT empno,ename,hiredate,sal,
+          DENSE_RANK() OVER (ORDER BY sal DESC,hiredate ASC) as rnk
+   FROM emp 
+
+  PARTITION BY clause :-
+  ---------------------
+
+  => used to find ranks with in group , for example to find ranks with in group first we need to 
+     divide the table dept wise using PARTITION BY clause and apply rank/dense_rank function on each
+     dept instead of applying it on whole table.
+
+    Display rank of the employees with in dept based on sal ?
+
+    SELECT empno,ename,sal,deptno,
+            DENSE_RANK() OVER (PARTITION BY deptno ORDER BY sal DESC) as rnk
+    FROM emp 
+  
+	7839	king	5000.00	10	1
+	7782	clark	2450.00	10	2
+	7934	miller	1300.00	10	3
+	7902	ford	3000.00	20	1
+	7788	scott	3000.00	20	1
+	7566	jones	2975.00	20	2
+	7876	adams	1100.00	20	3
+	7369	smith	800.00	20	4
+
+   
+ROW_NUMBER() :-
+----------------
+
+=> returns record numbers 
+=> it is also based on some column
+=> for row numbering input must be sorted 
+
+  SELECT empno,ename,sal,
+       ROW_NUMBER() OVER (ORDER BY empno ASC) AS RNO
+  FROM EMP 
+
+AGGREGATE FUNCTIONS :-
+---------------------
+
+ => these functions process group of rows and returns one value
+  
+ MAX() :- returns maximum value
+
+   MAX(arg) 
+
+ SELECT MAX(sal) FROM emp   => 5000
+
+ SELECT MAX(hiredate) FROM emp  => 2021-09-28
+
+ MIN() :- returns minimum value
+
+    MIN(arg) 
+
+ SELECT MIN(sal) FROM emp  =>  800
+
+ SUM() :- returns total 
+
+  SELECT SUM(sal) FROM emp  => 29025
+
+ => round the total sal to hundreds ?
+
+  SELECT  ROUND(SUM(sal),-2) FROM emp  => 29000
+
+  29000-------------29050--------------29100
+
+ => round the total sal to hundreds and display with thousand seperator ?
+
+   SELECT CONVERT(VARCHAR,ROUND(SUM(sal),-2),1) FROM emp  => 29,000.00
+
+ AVG() :- returns average value
+
+   AVG(arg) 
+
+ SELECT AVG(sal) FROM emp   = 2073.2142
+
+ => round avg(sal) to lowest ? 
+
+   SELECT FLOOR(AVG(sal)) FROM emp 
+
+ COUNT() :- returns no of values present in a column
+
+  SELECT COUNT(empno) FROM emp  => 14
+
+  SELECT COUNT(comm) FROM emp   => 4 (count function ignores nulls)
+
+ COUNT(*) :- returns no of rows in a table. 
+
+  SELECT COUNT(*) FROM emp 
+
+24-nov-21
+
+ => diff b/w count & count(*)  ?
+
+   count function ignores nulls where as count(*) includes nulls 
+
+   T1
+   F1
+   10
+   NULL
+   20
+   NULL
+   30
+   NULL
+   
+    COUNT(F1)  =>  3
+
+    COUNT(*)   =>  6
+
+=> Display no of employees  joined in 2021 year ?
+
+   SELECT COUNT(*)
+   FROM emp 
+   WHERE DATEPART(yy,hiredate)=2021
+
+ => Display no of employees joined on sunday ?
+
+   SELECT COUNT(*)
+   FROM emp 
+   WHERE DATENAME(dw,hiredate)='sunday' 
+
+=> count no of employees joined in 2nd quarter of 2021 year ?
+ 
+   SELECT COUNT(*)
+   FROM emp 
+   WHERE DATEPART(yy,hiredate) = 2021
+         AND
+         DATEPART(qq,hiredate) = 2 
+
+ NOTE :- aggregate functions are not allowed in where clause and they are allowed only in select,having clauses 
+
+      SELECT ename
+      FROM emp 
+      WHERE  sal = MAX(sal)  => ERROR 
+ 
+--------------------------------------------------------------------------------------------------------
+
+
+CASE statement :-
+-----------------
+
+=> CASE statement is used to implement IF-THEN-ELSE
+=> similar to switch case
+=> CASE statements are 2 types 
+
+  1 simple case
+  2 searched case 
+
+ 1 simple case :- 
+ -----------------
+
+ => use simple case when conditions based on "=" operator 
+
+  CASE <expr>
+  WHEN value1 THEN return expr1
+  WHEN value2 THEN return expr2
+  ---------------
+  ELSE return expr
+  END 
+
+ => Display ENAME  JOB   ?
+   
+     IF job=CLERK display WORKER
+            MANAGER       BOSS
+            PRESIDENT     BIG BOSS
+            OTHERS        EMPLOYEE
+
+   SELECT ename,
+          CASE job
+          WHEN 'CLERK' THEN 'WORKER'
+          WHEN 'MANAGER' THEN 'BOSS'
+          WHEN 'PRESIDENT' THEN 'BIG BOSS'
+          ELSE 'EMPLOYEE'
+          END
+  FROM EMP 
+
+25-nov-21
+
+
+ => increment employee salaries as follows ? 
+
+    if deptno=10  incr sal by 10%
+              20              15%
+              30              20%
+            others            5%
+
+  UPDATE emp 
+  SET sal = CASE deptno
+            WHEN 10 THEN sal+(sal*0.1)
+            WHEN 20 THEN sal+(sal*0.15)
+            WHEN 30 THEN sal+(sal*0.2)
+            ELSE sal+(sal*0.05)
+            END
+
+ 2 SEARCHED CASE :- 
+   ---------------
+
+  => use searched case when conditions not based on "=" operator 
+
+    CASE 
+    WHEN COND1 THEN RETURN EXPR1
+    WHEN COND2 THEN RETURN EXPR2
+    ---------------------
+    ELSE RETURN  EXPR
+    END
+
+Example 1 :-
+
+ => Display  ENAME,SAL,SALRANGE   ?
+
+        IF SAL>3000 display HISAL
+           SAL<3000 display LOSAL
+           SAL=3000 display AVGSAL
+
+  SELECT ename,sal,
+         CASE 
+         WHEN sal>3000 THEN 'HISAL'
+         WHEN sal<3000 THEN 'LOSAL'
+         ELSE 'AVGSAL'
+         END 
+  FROM emp 
+
+
+ Example 2 :-
+
+ STUDENT
+ SNO  SNAME   S1   S2   S3
+  1    A      80   90   70
+  2    B      30   60   50
+
+ => display  SNO,TOTAL,AVG,RESULT  ?
+
+ SELECT SNO,S1+S2+S3 AS TOTAL,(S1+S2+S3)/3 AS AVG,
+        CASE 
+        WHEN S1>=35 AND S2>=35 AND S3>=35 THEN 'PASS'
+        ELSE 'FAIL'
+        END AS RESULT
+ FROM STUDENT 
+
+ 
+=> Display SNO,TOTAL,AVG,RESULT  ?
+                      
+                         DISTINCTION
+                         FIRST
+                         SECOND
+                         THIRD
+                         FAIL
+
+ -------------------------------------------------------------------------------------------------------
+
+ GROUP BY clause :- 
+ ------------------
+
+ => GROUP BY clause is used to group rows based on one or more columns to calculate min,max,sum,avg,
+    count for each group.
+
+    1	A	5000	10
+    2	B	6000	20					10	13000
+    3	C	4000	30-------------GROUP BY-------------->	20	9000
+    4	D	3000	20					30	4000
+    5	E	8000	10
+ 
+    detailed data                                               summarized data 
+
+ 
+  => GROUP BY clause is used to convert detailed data into summarized data which is useful  for 
+     analysis.
+
+  syn :- 
+
+   SELECT columns
+   FROM tabname
+   [WHERE condition]
+   GROUP BY <col>
+   [HAVING condition]
+   [ORDER BY <col> asc/desc]
+
+ execution :- 
+
+  FROM
+  WHERE
+  GROUP BY
+  HAVING
+  SELECT
+  ORDER BY 
+
+=> display dept wise total salary ?
+
+    SELECT DEPTNO,SUM(sal) AS TOTSAL
+    FROM emp 
+    GROUP BY deptno 
+
+ FROM emp :- 
+ ------------
+
+    1	A	5000	10
+    2	B	6000	20				 
+    3	C	4000	30 
+    4	D	3000	20					 
+    5	E	8000	10
+ 
+GROUP BY deptno :-
+-------------------
+
+10
+	1	A	5000
+	5	E	8000
+
+20
+	2	B	6000
+	4	D	3000
+
+30
+	3	C	4000
+ 
+SELECT deptno,SUM(sal) :-
+--------------------------
+
+  10	13000
+  20	9000
+  30	4000
+
+ => display job wise no of employees ?
+
+    SELECT job,COUNT(*) as cnt
+    FROM emp 
+    GROUP BY job 
+
+ 26-nov-21
+
+  => display year wise no of employees joined  ?
+
+    SELECT DATEPART(yy,hiredate) as year,COUNT(*) as cnt
+    FROM emp 
+    GROUP BY DATEPART(yy,hiredate)
+
+ => display no of employees joined for each day ?
+
+    SELECT DATENAME(dW,hiredate) as day,COUNT(*) as cnt
+    FROM emp 
+    GROUP BY DATENAME(dw,hiredate)
+
+ => display no of employees joined in each quarter in the year 2021 ?
+ 
+    SELECT DATEPART(qq,hiredate) as qrt,COUNT(*) as cnt
+    FROM emp 
+    WHERE DATEPART(yy,hiredate)=2021
+    GROUP BY DATEPART(qq,hiredate)
+    
+ => display the departments where no of employees working more than  3 ? 
+
+    SELECT deptno,COUNT(*) as cnt
+    FROM emp 
+    WHERE COUNT(*) > 3 
+    GROUP BY deptno       =>  ERROR 
+
+    SQL SERVER calculates dept wise  count after group by and it cannot calculate before group by 
+    so apply the condition COUNT(*) > 3 after group by using HAVING clause.
+
+    SELECT deptno,COUNT(*) as cnt
+    FROM emp
+    GROUP BY deptno   
+    HAVING COUNT(*) > 3 
+    
+ GROUP BY deptno :- 
+ -------------------
+
+ 10
+     ----
+     ----
+     ----
+ 
+ 20
+     -----
+     -----
+     -----
+     ------
+     -------
+
+ 30
+      -------
+      -------
+      -------
+      -------
+      -------
+      -------
+
+ HAVING COUNT(*) > 3 :- 
+ -----------------------
+
+ 20
+	----
+	----
+	----
+	----		
+	----
+
+ 30
+	----
+	----
+	----
+	----
+	----
+	-----
+
+ 
+ SELECT DEPTNO,COUNT(*) :- 
+ -----------------------------
+
+  20  5
+  30  6 
+
+ WHERE VS HAVING :- 
+ -----------------
+
+	WHERE						HAVING
+
+  1	filter rows					filter groups 
+
+  2	conditions  applied on each row                 conditions applied on each group 
+
+  3	conditions applied before group by              conditions applied after group by 
+
+  4	use where clause if cond doesn't 		use having clause if cond contains 
+        contain aggregate function                       aggregate function
+
+
+ => display job wise no of employees where job = clerk,manager and no of employees > 3 ?
+
+    SELECT job,COUNT(*) as cnt
+    FROM emp 
+    WHERE job IN ('CLERK','MANAGER') 
+    GROUP BY job 
+    HAVING COUNT(*) > 3 
+
+ Grouping based on multiple columns :-
+ -------------------------------------
+
+ => display dept wise and with in dept job wise total salary ?
+
+	SELECT deptno,job,SUM(sal) as totsal
+	FROM emp
+	GROUP BY deptno,job 
+	ORDER BY deptno ASC 
+
+ 	10	CLERK		1300
+		MANAGER		2450
+		PRESIDENT	5000
+
+ 	20	ANALYST		6000
+		CLERK		1900
+		MANAGER		2975
+
+
+ 	30	CLERK		950
+		MANAGER		2850
+		SALESMAN	5600
+
+   => display year wise and with in year quarter wise no  of employees joined ?
+ 
+      
+      2018	1	?
+		2	?
+		3	?
+		4	?
+
+      2019	1	?
+
+29-nov-21
+
+rollup & cube :- 
+-----------------
+
+=> rollup & cube are used to calculate subtotals and grand total
+
+      syn :-  GROUP BY ROLLUP(COL1,COL2)
+              GROUP BY CUBE(COL1,COL2)
+
+ ROLLUP :- 
+ ----------
+
+ => ROLLUP calculates subtotals for each group and also 
+    calculates grand total.
+
+    	SELECT deptno,job,SUM(sal) as totsal
+	FROM emp 
+	GROUP BY ROLLUP(deptno,job)
+	ORDER BY ISNULL(deptno,99) ASC 
+ 
+	10	CLERK		1300.00
+	10	MANAGER		2450.00
+	10	PRESIDENT	5000.00
+	10	NULL		8750.00  => DEPT SUBTOTAL
+	20	ANALYST		6000.00
+	20	CLERK		1900.00
+	20	MANAGER		2975.00
+	20	NULL		10875.00 => DEPT SUBTOTAL
+	30	CLERK		950.00
+	30	MANAGER		2850.00
+	30	SALESMAN	5600.00
+	30	NULL		9400.00  => DEPT SUBTOTAL
+	NULL	NULL		29025.00 => GRAND TOTAL
+
+ CUBE :- 
+ --------
+
+ => cube displays subtotals for each group by  column and
+    also displays grand total.
+
+ 	SELECT deptno,job,SUM(sal) as totsal
+	FROM emp 
+	GROUP BY CUBE(deptno,job)
+	ORDER BY ISNULL(deptno,99) ASC , ISNULL(job,'Z') ASC 
+
+	10	CLERK		1300.00
+	10	MANAGER		2450.00
+	10	PRESIDENT	5000.00
+	10	NULL		8750.00  => dept subtotal
+	20	ANALYST		6000.00
+	20	CLERK		1900.00
+	20	MANAGER		2975.00
+	20	NULL		10875.00 => dept subtotal
+	30	CLERK		950.00
+	30	MANAGER		2850.00
+	30	SALESMAN	5600.00
+	30	NULL		9400.00 => dept subtotal
+	NULL	ANALYST		6000.00 => job subtotal
+	NULL	CLERK		4150.00 => job subtotal
+	NULL	MANAGER		8275.00 => job subtotal
+	NULL	PRESIDENT	5000.00 => job subtotal
+	NULL	NULL		29025.00 => grand total
+
+  GROUPING_ID() :- 
+  -----------------
+
+  => accepts group by columns and returns subtotal belongs to
+     which group by columns 
+ 
+      ex :- GROUPING_ID(deptno,job)
+
+     1  => subtotal belongs to first group by columns i.e. deptno
+     2  => subtotal belongs to second group by columns i.e. job
+     3  => grand total 
+
+ SELECT deptno,job,SUM(sal) as totsal,
+       CASE GROUPING_ID(deptno,job) 
+	   WHEN 1 THEN 'Dept Subtotal'
+	   WHEN 2 THEN 'Job subtotal'
+	   WHEN 3 THEN 'Grand total'
+	   ELSE ''
+	   END as subtotal 
+ FROM emp 
+
+10	CLERK		1300.00	
+10	MANAGER		2450.00	
+10	PRESIDENT	5000.00	
+10	NULL		8750.00		Dept Subtotal
+20	ANALYST		6000.00	
+20	CLERK		1900.00	
+20	MANAGER		2975.00	
+20	NULL		10875.00	Dept Subtotal
+30	CLERK		950.00	
+30	MANAGER		2850.00	
+30	SALESMAN	5600.00	
+30	NULL		9400.00		Dept Subtotal
+NULL	ANALYST		6000.00		Job subtotal
+NULL	CLERK		4150.00		Job subtotal
+NULL	MANAGER		8275.00		Job subtotal
+NULL	PRESIDENT	5000.00		Job subtotal
+NULL	SALESMAN	5600.00		Job subtotal
+NULL	NULL		29025.00	Grand total
+
+Assignments :-
+---------------
+
+PERSONS
+aadharno   name   age  gender  addr  city  state 
+
+
+1 display gender wise population ?
+2 display state wise population ?
+3 display age group wise population ?
+4 display state wise and with in state gender wise population
+  and also display state wise & gender wise subtotals and 
+  grand total ?
+
+
+SALES
+DATEID		PRODID	CUSTID	QTY	AMOUNT
+2021-11-29
+
+
+=> display year wise total sales amount ?
+
+=> display year wise and with in year quarter wise total
+   sales amount and also display year wise subtotals and
+   grand total ?
+
+     
+   
+summary :- 
+
+importance of group by clause
+writing queries using group by
+where vs having
+rollup & cube
+grouping_id
+ 
+30-nov-21
+
+ Integrity Constraints :- 
+ ------------------------
+
+ => Integrity Constraints are rules to maintain Data Quality or Data Consistency
+ => prevents users from entering invalid data.
+ => used to enforce rules like min sal must be 3000 
+ => different integrity constraints in sql server 
+
+  1 NOT NULL
+  2 UNIQUE
+  3 PRIMARY KEY
+  4 CHECK  
+  5 FOREIGN KEY 
+  6 DEFAULT 
+
+ => above constraints can be declared in two ways 
+
+  1 column level
+  2 table level 
+
+ column level :- 
+ -----------------
+
+ => if constraint is declared immediately after declaring column then it is
+    called column level.
+
+  syn :- CREATE TABLE <tabname>
+         (
+           colname datatype(size),
+           colname datatype(size),
+           ----------------------
+         )
+
+ NOT NULL :- 
+ ------------
+
+ => NOT NULL constraint doesn't accept null values 
+ => a column declared with NULL is called mandatory column
+
+ ex :- CREATE TABLE emp11
+       (
+         empno int,
+         ename varchar(10) NOT NULL
+       )
+
+ Testing :- 
+ ------------
+
+  INSERT INTO emp11 VALUES(100,'A')
+  INSERT INTO emp11 VALUES(101,NULL)  => ERROR
+
+ UNIQUE :- 
+ ---------
+
+ => UNIQUE constraint doesn't accept duplicates 
+
+  CREATE TABLE cust
+  (
+    custid  int,
+    cname varchar(20),
+    emailid  varchar(20) UNIQUE
+  )
+
+Testing :-
+----------
+
+ INSERT INTO cust VALUES(100,'A','abc@gmail.com')
+ INSERT INTO cust VALUES(101,'B','abc@gmail.com') => ERROR
+ INSERT INTO cust VALUES(102,'C',NULL)            => ACCEPTED
+ INSERT INTO cust VALUES(103,'D',NULL)            => ERROR
+ 
+ NOTE :- UNIQUE constraint allows one null.
+
+ PRIMARY KEY :- 
+ --------------
+
+ => PRIMARY KEY doesn't accept duplicates and nulls.
+ => PRIMARY KEY is the combination of unique & not null.
+
+	  PRIMARY KEY = UNIQUE + NOT NULL 
+
+ => in tables one column must be used to uniquely identify the records
+    and that column must be declared with primary key.
+
+    EX :- CREATE TABLE emp12
+          (
+            empid  int PRIMARY KEY,
+            ename  varchar(10)
+          )
+          
+  Testing  :- 
+  -----------
+
+  INSERT INTO emp12 VALUES(100,'A')
+  INSERT INTO emp12 VALUES(100,'B') => ERROR
+  INSERT INTO emp12 VALUES(NULL,'B') => ERROR
+
+ => because primary key is not allowing duplicates & nulls , so using
+    primary key we can uniquely identify the records.
+
+ => only one primary key allowed per table , if we want two primary keys then
+    declare one column with primary key and another column with unique & not null   
+   
+  CREATE TABLE cust
+  (
+    custid  	int PRIMARY KEY,
+    cname 	varchar(20),
+    aadharno 	bigint UNIQUE NOT NULL,
+    panno    	char(10) UNIQUE NOT NULL
+  )
+
+01-DEC-21
+----------
+
+ CHECK :- 
+ ---------
+
+ => use check constraint when rule based on condition
+
+        syn :- CHECK(condition)
+
+ Ex 1 :- sal must be min 3000
+
+    CREATE TABLE emp13
+    (
+       empid int,
+       ename varchar(10),
+       sal   money CHECK(sal>=3000)
+    )
+
+Testing :- 
+----------
+
+  INSERT INTO emp13 VALUES(100,'A',5000)  
+  INSERT INTO emp13 VALUES(101,'B',1000) => ERROR
+  INSERT INTO emp13 VALUES(102,'C',NULL)
+
+ EX 2 :- gender must be 'm','f' ?
+
+         gender char(1) check(gender in ('m','f'))
+
+ EX 3 :- amt must be multiple of 100 ?
+
+         amt  money CHECK(amt%100=0)
+
+ EX 4 :- emailid must contain '@'
+         emailid must end with '.com' or '.co' or '.in' 
+
+         emailid  varchar(30) check(emailid like '%@%'
+                                    and
+                                    (emailid like '%.com'
+                                     or
+                                     emailid like '%.co'
+                                     or
+                                     emailid like '%.in'
+                                     ))
+
+FOREIGN KEY :- 
+--------------
+
+ => foreign key is used to establish relationship between two tables. 
+
+ => to  establish relationship take pk of one table and add it to another
+    table as foreign key and declare with references constraint.
+
+   CUSTOMERS
+   custid(pk)	name    addr
+   100	  	A	 HYD
+   101	  	B	 HYD
+   102	  	C	 HYD
+
+   ORDERS 				
+   ordid  ord_dt  del_dt  custid  REFERENCES customers(custid)	
+   1000	  01-dec  5-dec	  100 		 
+   1001	  01-dec  10-dec  101		
+   1002	  01-dec  6-dec	  999  => NOT ACCEPTED
+   1003	  01-dec  9-dec   100  => ACCEPTED 
+   1004	  01-dec  10-dec  NULL => ACCEPTED 
+
+ => values entered in fk column should match with values entered in pk column
+ => fk allows duplicates and nulls.
+ => after declaring foreign key a relationship is created between two 
+    tables called parent/child relationship.
+ => primary key table is parent and foreign key table is child.
+
+  CREATE TABLE customers 
+  (
+    custid  int PRIMARY KEY,
+    cname   varchar(10) NOT NULL,
+    caddr   varchar(10)
+   ) 
+
+  INSERT INTO customers VALUES(100,'A','HYD'),(101,'B','HYD')
+
+  CREATE TABLE orders
+  (
+    ordid  int  PRIMARY KEY,
+    ord_dt date,
+    del_dt date,
+    custid  int REFERENCES customers(custid)
+  )
+
+ INSERT INTO orders VALUES(1000,getdate(),'2021-12-10',100)
+ INSERT INTO orders VALUES(1001,getdate(),'2021-12-10',999) => ERROR
+ INSERT INTO orders VALUES(1002,getdate(),'2021-12-10',100)
+ INSERT INTO orders VALUES(1003,getdate(),'2021-12-10',NULL)
+ 
+ Assignment :- 
+--------------
+
+ ACCOUNTS
+ ACCNO    NAME   ACTYPE   BAL 
+
+ Rules :- 
+
+ 1 accno should not be duplicate & null
+ 2 name should not be null
+ 3 actype must be 'S','C','R'
+ 4 bal must be min 1000
+
+ TRANSACTIONS
+ TRID   TTYPE   TDATE   TAMT   ACCNO
+ 
+ Rules :- 
+
+ 1 trid must be automatically generated
+ 2 ttype must be 'W' OR 'D'
+ 3 tdate must be current date
+ 4 tamt must be multiple of 100
+ 5 accno should match with accounts table accno
+ 6 accno should not be null
+
+ 02-DEC-21
+
+ DEFAULT :- 
+ ---------
+
+ => a column can be declared with default value as follows 
+
+      ex :-  hiredate date default getdate
+
+ => while inserting if we skip hiredate then sql server inserts default value
+
+     CREATE TABLE emp14
+     (
+        empno int,
+        hiredate date default getdate()
+     )
+
+   INSERT INTO emp14(empno) VALUES(100)
+   INSERT INTO emp14 VALUES(101,'10-05-2021')
+   INSERT INTO emp14 VALUES(102,NULL)
+
+    SELECT * FROM emp14
+
+    empno	hiredate
+    100		2021-12-02
+    101		2021-10-05
+    102		null
+
+ TABLE LEVEL :- 
+ --------------
+
+ => if constraints are declared after declaring all columns then it is called
+    table level. Use table level to declare constraints for multiple columns
+    or combination of columns. 
+
+    syn :- CREATE TABLE <tabname>
+           (
+             COLNAME DATATYPE(SIZE),
+             COLNAME DATATYPE(SIZE),
+             -----------------------,
+                    CONSTRAINT(COL1,COL2,---)          
+           )
+
+ Declaring CHECK constraint at table level :- 
+ ---------------------------------------------
+
+ PRODUCTS
+ PRODID	  PNAME   PRICE   MFD_DT   	EXP_DT 
+ 100	  ABC	  1000	  2021-10-01	2021-01-01    => INVALID
+
+   RULE :- EXP_DT > MFD_DT 
+
+  CREATE TABLE PRODUCTS
+  (
+    prodid int,   
+    pname  varchar(10),
+    price  money,  
+    mfd_dt date ,
+    exp_dt date ,
+	     CHECK(exp_dt > mfd_dt)
+  )
+
+  INSERT INTO products VALUES(100,'A',1000,GETDATE(),'2021-01-01') => error
+
+ composite primary key :- 
+ ------------------------
+
+ => if primary key  declared for combination of columns then  it is called
+    composite primary key 
+
+ => in composite primary key combination should not be duplicate.
+
+ => composite primary key is declared at table level.
+
+  ORDERS
+  ordid	 prodid	 qty 
+  1000	 100	 2
+  1000	 101	 2
+  1000	 102	 1
+  1001	 100	 2
+
+  example :- 
+
+  CREATE TABLE orders
+  (
+    ordid int,
+    prodid int,
+    qty  int,
+       PRIMARY KEY(ordid,prodid)
+   )
+
+      INSERT INTO orders VALUES(1000,100,2)
+      INSERT INTO orders VALUES(1000,101,2)
+      INSERT INTO orders VALUES(1001,100,2)
+      INSERT INTO orders VALUES(1000,100,2)  => error
+
+ Assignment :- 
+ --------------
+
+ SALES
+ DATEID	  PRODID    CUSTID	QTY	AMOUNT
+ 
+ => identity primary key and create the table ? 
+
+ which of the following constriant cannot be declared at table level ?
+
+ A UNIQUE
+ B CHECK
+ C NOT NULL
+ D PRIMARY KEY
+ E FOREIGN KEY 
+
+  ANS :- C 
+
+03-dec-21
+
+ Adding constraints to existing table :-
+ ---------------------------------------
+
+=> "ALTER" command is used to add constraint to existing table
+
+ ex :- CREATE TABLE emp44
+       ( 
+         empno INT ,
+         ename VARCHAR(10),
+         sal   MONEY,
+         dno   INT
+        )
+
+Adding Primary key :- 
+---------------------
+
+=> PRIMARY KEY cannot be added to nullable column , so to add PRIMARY KEY 
+   first change the column to NOT NULl then add PRIMARY KEY.
+
+    add primary key to column empno ?
+
+   step 1 :-  changing the column to NOT NULL
+
+	      ALTER TABLE emp44
+                   ALTER COLUMN empno INT NOT NULL 
+
+   step 2 :-  Add primary key
+
+        ALTER TABLE emp44
+             ADD PRIMARY KEY(empno)
+
+ Adding check constraint :- 
+ --------------------------
+
+ => add check constraint with condition sal>=3000
+
+     ALTER TABLE emp44
+         ADD CHECK(sal>=3000)
+ 
+ Adding Foreign Key :- 
+ ---------------------
+
+ => add foreign key to column dno that refers dept table primary key i.e.deptno ?
+
+     ALTER TABLE emp44
+         ADD FOREIGN KEY(dno) REFERENCES DEPT(deptno) 
+ 
+ changing from NULL to NOT NULL :- 
+ -----------------------------------
+
+ => modify the column ename to not null ?
+
+    ALTER TABLE emp44
+        ALTER COLUMN ename VARCHAR(10) NOT NULL 
+
+ Droping Constraints :- 
+ -----------------------
+
+  ALTER TABLE <tabname>
+      DROP CONSTRAINT <name>
+
+ => drop check constraint in emp44 table ?
+
+   ALTER TABLE emp44
+       DROP CONSTRAINT CK__emp44__sal__571DF1D5
+
+ => drop primary key in dept table ?
+
+      ALTER TABLE dept
+          DROP CONSTRAINT PK__DEPT__E0EB08D7C34BC045  => ERROR
+
+      DROP TABLE dept  => ERROR
+
+      TRUNCATE TABLE dept => ERROR 
+
+  NOTE :- primary key constraint cannot be dropped if referenced by fk
+          primary key table cannot be dropped if referenced by fk
+          primary key table cannot be truncated if referenced by fk
+
+  DELETE rules :- 
+  ----------------
+
+  1 ON DELETE NO ACTION (DEFAULT)
+  2 ON DELETE CASCADE
+  3 ON DELETE SET NULL
+  4 ON DELETE SET DEFAULT 
+
+ => above rules are declared with foreign key 
+ => these rules specifies how child rows are affected if parent row is deleted
+
+ ON DELETE NO ACTION :- 
+ ----------------------
+
+ => parent row cannot be deleted if associated with child rows 
+
+ CREATE TABLE dept66
+ (
+   dno int primary key,
+   dname varchar(10)
+  ) 
+
+ INSERT INTO dept66 VALUES(10,'HR'),(20,'IT')
+
+ CREATE TABLE emp66
+ (
+   empno int PRIMARY KEY,
+   ename VARCHAR(10),
+   dno   int REFERENCES dept66(dno)
+  ) 
+
+ INSERT INTO emp66 VALUES(1,'A',10),(2,'B',10)
+
+ DELETE FROM dept66 WHERE dno=10 => ERROR 
+ 
+ scenario :-
+ ----------
+
+ ACCOUNTS
+ ACCNO    BAL
+ 100	  10000
+ 101	  20000
+
+ LOANS
+ LOANID  TYPE  AMT   ACCNO
+ 1	 H     30    100
+ 2       C     10    100
+ 
+RULE :- account closing is not possible if associated with loans 
+
+ ON DELETE CASCADE :- 
+ ---------------------
+
+ => if  parent row is deleted then it is deleted with child rows 
+
+ CREATE TABLE dept66
+ (
+   dno int primary key,
+   dname varchar(10)
+  ) 
+
+ INSERT INTO dept66 VALUES(10,'HR'),(20,'IT')
+
+ CREATE TABLE emp66
+ (
+   empno int PRIMARY KEY,
+   ename VARCHAR(10),
+   dno   int REFERENCES dept66(dno)
+             ON DELETE CASCADE 
+  ) 
+
+ INSERT INTO emp66 VALUES(1,'A',10),(2,'B',10)
+  
+  DELETE FROM dept66 WHERE dno=10  => 1 row affected 
+  
+  SELECT * FROM emp66 => no rows 
+
+scenario :- 
+
+ ACCOUNTS
+ ACCNO	  BAL
+ 100	  10000
+ 101	  20000
+
+ TRANSACTIONS
+ TRID	TTYPE	TDATE	TAMT	ACCNO  REFERENCES ACCOUNTS(ACCNO)  ON DELETE CASCADE
+ 1	W	????	2000	100
+ 2	D	???	5000	100
+
+ RULE :- if account is closed then along with account delete transactions also 
+
+04-dec-21
+
+ON DELETE SET NULL :-
+---------------------
+
+=> if parent row is deleted but child rows are not deleted but fk will be set null.
+
+   CREATE TABLE dept66
+ (
+   dno int primary key,
+   dname varchar(10)
+  ) 
+
+ INSERT INTO dept66 VALUES(10,'HR'),(20,'IT')
+
+ CREATE TABLE emp66
+ (
+   empno int PRIMARY KEY,
+   ename VARCHAR(10),
+   dno   int REFERENCES dept66(dno)
+             ON DELETE SET NULL
+  ) 
+
+ INSERT INTO emp66 VALUES(1,'A',10),(2,'B',10)
+  
+ DELETE FROm dept66 WHERE dno=10  =>  1 row affected 
+
+ SELECT * FROM emp66
+
+ ENO	ENAME	DNO
+ 1	A	NULL
+ 2	B	NULL
+
+ secenario :- 
+ ------------
+
+ PROJECTS
+ projid	  name	duration  client   	cost
+ 100	  AAA	5 YEARS   TATA MOTORS   120CR
+ 101	  BBB	4 YEARS   DBS BANK	80CR
+ 102	  CCC	5 YEARS   L&T		100CR
+
+ EMP
+ EMPID	ENAME	SAL	PROJID  REFERENCES PROJECTS(PROJID) ON DELETE SET NULL
+ 1	A	5000	100
+ 2	B	3000	101
+ 3	C	4000	102
+
+ 
+ON DELETE SET DEFAULT :-
+------------------------ 
+
+ => if parent row is deleted , but child rows are not deleted but fk will be set default value
+
+  CREATE TABLE dept66
+ (
+   dno int primary key,
+   dname varchar(10)
+  ) 
+
+ INSERT INTO dept66 VALUES(10,'HR'),(20,'IT')
+
+ CREATE TABLE emp66
+ (
+   empno int PRIMARY KEY,
+   ename VARCHAR(10),
+   dno   int DEFAULT 20 
+             REFERENCES dept66(dno)
+             ON DELETE SET DEFAULT
+  ) 
+
+ INSERT INTO emp66 VALUES(1,'A',10),(2,'B',10)
+ 
+
+   DELETE FROM dept66 WHERE dno=10 => 1 row affected 
+
+   SELECT * from emp66
+ 
+   ENO	ENAME	DNO
+   1	A	20
+   2	B	20
+
+ UPDATE rules :- 
+ --------------
+
+ 1 ON UPDATE NO ACTION (DEFAULT)
+ 2 ON UPDATE CASCADE
+ 3 ON UPDATE SET NULL
+ 4 ON UPDATE SET DEFAULT
+
+ => these rules are also declared with foreign key
+ => these rules specifies how fk value affected if primary key value is updated 
+
+ summary :- 
+
+1 importance of constraints 
+2 declaring constraints
+3 column & table level
+4 adding constraints to existing table
+5 droping constraints
+6 delete rules & update rules 
+
+------------------------------------------------------------------------------
+
+06-dec-21			JOINS
+				-----
+
+ => join is an operation performed to fetch data from two or more tables ,
+    to fetch data from two tables we need to join those tables.
+
+ => in DB tables are normalized i.e. related data stored in multiple tables ,
+    if we want to gather or combine data stored in multiple tables we need 
+    join those tables.
+
+    ORDERS				  CUSTOMERS
+    ordid  ord_dt   del_dt   cid	  cid	name	addr
+    1000   01/12    10/12    10		  10	A	HYD    
+    1001   02/12    12/12    11		  11	B	HYD
+    1002   03/12    15/12    12		  12	C	HYD
+    
+ 
+  output :-
+
+    	 ordid   ord_dt   del_dt   cname   caddr
+     	 1000    01/12    1/12     A       HYD
+
+Types of joins :-
+-----------------
+
+1 equi join / inner join
+2 outer join 
+    left join
+    right join
+    full join
+3 non equi join
+4 self join
+5 cross join / cartesian join 
+
+ equi join / inner join :- 
+ --------------------------
+
+ => to perform equi join between the two tables there must be a common field
+    and name of the common field need not to be same and pk-fk relationship
+    is also not compulsory.
+
+   SELECT columns
+   FROM tab1 INNER JOIN tab2
+     ON join condition 
+
+ join condition :-
+ ----------------- 
+
+ => based on the given join condition sql server joins records of two tables.
+ 
+ => join condition determines which record of 1st table should be joined with
+    which record of 2nd table.    
+
+      table1.commonfield = table2.commonfield
+
+ => this join is called equi join because here join condition based on "=" operator  
+
+   Example :- 
+
+    EMP					DEPT
+    EMPNO  ENAME  SAL   DEPTNO		DEPTNO	DNAME		LOC
+    1	   A      5000  10  		10	ACCOUNTS        NEW YORK      
+    2      B      6000  20		20	RESEARCH	DALLAS
+    3      C      4000  30		30	SALES		CHICAGO
+    4      D      3000  10		40	OPERATIONS 	BOSTON
+    5      E      2000  NULL
+
+ => display  EMPNO   ENAME   SAL	DNAME	LOC   ?
+             -----------------------    ---------------
+                     EMP                   DEPT
+
+    SELECT empno,ename,sal,dname,loc
+      FROM emp INNER JOIN dept 
+        ON emp.deptno = dept.deptno 
+
+    1  A   5000   ACCOUNTS     NEW YORK
+    2  B   6000   RESEARCH     DALLAS
+    3  C   4000   SALES        CHICAGO
+    4  D   3000   ACCOUNTS     NEW YORK
+    
+    
+ => display  EMPNO   ENAME   SAL   DEPTNO   DNAME	LOC   ?
+             
+    SELECT empno,ename,sal,deptno,dname,loc
+      FROM emp INNER JOIN dept 
+        ON emp.deptno = dept.deptno  => ERROR 
+
+ NOTE :- in join queries declare table alias and prefix column names with
+ table alias for two reasons 
+
+  1 to avoid ambiguity
+  2 for faster execution 
+
+   SELECT e.empno,e.ename,e.sal,d.deptno,d.dname,d.loc
+      FROM emp e INNER JOIN dept d
+        ON e.deptno = d.deptno
+
+07-DEC-21
+
+ => display employee details with dept details working at NEW YORK loc ?
+
+    SELECT e.empno,e.ename,e.sal,d.deptno,d.dname,d.loc
+      FROM emp e INNER JOIN dept d
+        ON e.deptno = d.deptno  /* join condition */
+     WHERE d.loc='NEW YORK'     /* filter condition */
+
+ joining more than 2 tables :- 
+ -----------------------------
+
+ SELECT columns
+ FROM tab1 INNER JOIN tab2
+   ON condition
+           INNER JOIN tab3
+   ON condition
+           INNER JOIN tab4
+   ON condition
+
+ example :- 
+ ----------
+
+  EMP         DEPT       LOCATIONS        COUNTRIES
+  empno       deptno     locid            country_id
+  ename       dname      city             country_name
+  sal         locid      state              
+  deptno                 country_id
+
+  display  EMPNO  ENAME  SAL   DNAME   CITY   STATE  COUNTRY_NAME  ? 
+           ------------------  ------- ------------- --------------
+                   EMP          DEPT     LOCATIONS    COUNTRIES 
+
+  SELECT e.empno,e.ename,e.sal,
+         d.dname,
+         l.city,l.state,
+         c.country_name 
+  FROM   emp e INNER JOIN dept d
+    ON   e.deptno = d.deptno
+               INNER JOIN locations l
+    ON   d.locid = l.locid
+               INNER JOIN countries c
+    ON   l.country_id = c.country_id 
+
+OUTER JOIN :- 
+--------------
+
+ => inner join returns only matching rows but cannot return unmatched rows,
+    to get unmatched rows also perform outer join.
+
+   
+    EMP					DEPT
+    EMPNO  ENAME  SAL   DEPTNO		DEPTNO	DNAME		LOC
+    1	   A      5000  10  		10	ACCOUNTS        NEW YORK      
+    2      B      6000  20		20	RESEARCH	DALLAS
+    3      C      4000  30		30	SALES		CHICAGO
+    4      D      3000  10		40	OPERATIONS 	BOSTON => unmatched row
+    5      E      2000  NULL => unmatched row
+
+ => outer join is 3 types 
+
+  1 LEFT JOIN
+  2 RIGHT JOIN
+  3 FULL JOIN
+
+ LEFT join :-
+ ------------
+
+ => LEFT join returns all rows (matched + unmatched) from left side table 
+    and matching rows from right side table.
+
+   SELECT e.ename,d.dname
+    FROM  emp e LEFT JOIN dept d
+      ON  e.deptno = d.deptno 
+
+ => above query returns all rows from emp and matching rows from dept 
+
+    A	ACCOUNTS
+    B	RESEARCH
+    C	SALES
+    D	ACCOUNTS
+    E	NULL   => UNMATCHED FROM EMP 
+
+ RIGHT JOIN :-
+ ------------
+
+ => returns all rows from right side table and matching rows from left side table
+
+      SELECT e.ename,d.dname
+        FROM  emp e RIGHT JOIN dept d
+          ON  e.deptno = d.deptno 
+
+ => returns all rows from dept table and matching rows from emp table
+
+   	A	ACCOUNTS
+	B	RESEARCH
+	C	SALES
+	D	ACCOUNTS
+	NULL	OPERATIONS => unmatched from dept 
+
+ FULL JOIN :- 
+ ------------
+
+ => returns all rows from both tables 
+
+     SELECT e.ename,d.dname
+        FROM  emp e FULL JOIN dept d
+          ON  e.deptno = d.deptno 
+
+   	A	ACCOUNTS
+	B	RESEARCH
+	C	SALES
+	D	ACCOUNTS
+	E	NULL     => unmatched from emp
+	NULL	OPERATIONS => unmatched from dept
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
