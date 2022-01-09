@@ -1,20 +1,3 @@
-Day-1: https://youtu.be/qmghpXWLFAk
-Day-2: https://youtu.be/tlUQkSuc2nc
-Day-3: https://youtu.be/Jx4e_SjydiU
-Day-4: https://youtu.be/kkBpPbVNslY
-Day-5: https://youtu.be/GagnxDTY5yg
-Day-6: https://youtu.be/rUCzDaGO8hE
-Day-7: https://youtu.be/FvDZyqhQBF0
-Day-8: https://youtu.be/YGIrXjjKgDE
-Day-9: https://youtu.be/78BLMVmZSwI
-Day-10: https://youtu.be/Wd7EAaC6UF8
-Day-11: https://youtu.be/Any0GGMZs6U
-Day-12: https://youtu.be/hduPZxGesoA
-Day-13: https://youtu.be/Q1Y_IKgHcTk
-Day-14: https://youtu.be/LKpnCsIr_co
-
-
-
 
 ===== lombok api==================
 
@@ -22,7 +5,9 @@ https://www.youtube.com/watch?v=4hlnLkwgxig&list=RDCMUC4o8Fdpv3g_AjgShAeivqpA&in
 
 https://www.youtube.com/watch?v=e1_9uPJ31Lw&list=RDCMUC4o8Fdpv3g_AjgShAeivqpA&index=2
 
-
+==========================================================================
+https://drive.google.com/drive/folders/1rAKc_2CpOPUh_vmIITOZa voPrypJubGx 
+==========================================================================
 
 Spring Boot & MicroServices @ 7:30 PM (IST) by Mr.Nataraj
 Day-1: https://youtu.be/abh_UUQmIgU
@@ -63,6 +48,48 @@ Pwd: 112233
 
 
 https://www.youtube.com/watch?v=5oemIoT3KEc
+
+
+
+===== lombok api==================
+
+https://www.youtube.com/watch?v=4hlnLkwgxig&list=RDCMUC4o8Fdpv3g_AjgShAeivqpA&index=1
+
+https://www.youtube.com/watch?v=e1_9uPJ31Lw&list=RDCMUC4o8Fdpv3g_AjgShAeivqpA&index=2
+
+https://www.youtube.com/watch?v=_3lUmEzkKs4
+
+
+====Agile-JIRA workshop =====
+https://www.youtube.com/watch?v=TUbriIbmJo0&t=1s
+https://www.youtube.com/watch?v=K-_kxisTKG0
+
+https://www.youtube.com/watch?v=_3lUmEzkKs4
+
+
+
+
+===>Spring JDBC Videos =============
+ https://youtu.be/4ccrm2cw7yw
+ https://youtu.be/ZLCtgHyl5ug
+ https://youtu.be/4J1Tw518YSA
+ https://youtu.be/ko2gvNZxhEc
+ https://youtu.be/n6E40xBGyZM
+ https://youtu.be/HtXBV4-7MIs
+ https://youtu.be/qwouM75mJWQ
+ https://youtu.be/mWnIcgnu9cE
+ https://youtu.be/A1R3Vmm5KVQ
+ https://youtu.be/xV4wfz85ZuQ
+ https://youtu.be/AKObOoiXtGc
+ https://youtu.be/9aExLuLkVKo
+ https://youtu.be/iyHrP0mn8co
+ https://youtu.be/UY-OOJL8XuY
+
+
+
+
+
+
 
 
 

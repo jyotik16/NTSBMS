@@ -4,7 +4,7 @@
 4. how to implement abstarction and encapsulation in java.
 5. how to make calss member is available for all object and should not modify.
 6. when we have to use abstract calss and interface .
-7. JVM erchitecture.
+7. JVM architecture.
 8. Can programmer generate the serialVersionUID ?
 9. what is externalization in java ? what are all methods need to override .
 10. How many ways we can create object in java ?
