@@ -1,3 +1,9 @@
+ 
+
+======java Bean=======
+https://www.youtube.com/watch?v=io2TciOcF2Y
+https://www.youtube.com/watch?v=GOvak6awDrI&t=161s
+
 
 ===== lombok api==================
 
@@ -62,6 +68,7 @@ https://www.youtube.com/watch?v=_3lUmEzkKs4
 
 ====Agile-JIRA workshop =====
 https://www.youtube.com/watch?v=TUbriIbmJo0&t=1s
+
 https://www.youtube.com/watch?v=K-_kxisTKG0
 
 https://www.youtube.com/watch?v=_3lUmEzkKs4
@@ -84,6 +91,59 @@ https://www.youtube.com/watch?v=_3lUmEzkKs4
  https://youtu.be/9aExLuLkVKo
  https://youtu.be/iyHrP0mn8co
  https://youtu.be/UY-OOJL8XuY
+
+
+======Project release process (part1) ================
+https://www.youtube.com/watch?v=_3lUmEzkKs4
+
+
+====Agile-JIRA workshop =====
+https://www.youtube.com/watch?v=TUbriIbmJo0&t=1s
+
+===== JIRA workshop ========================
+https://www.youtube.com/watch?v=K-_kxisTKG0
+
+
+=====  java  
+==============JAva Bean vedios =============
+https://www.youtube.com/watch?v=io2TciOcF2Y
+https://www.youtube.com/watch?v=GOvak6awDrI&t=161s
+
+
+===== lombok api==================
+https://www.youtube.com/watch?v=4hlnLkwgxig&list=RDCMUC4o8Fdpv3g_AjgShAeivqpA&index=1
+https://www.youtube.com/watch?v=e1_9uPJ31Lw&list=RDCMUC4o8Fdpv3g_AjgShAeivqpA&index=2
+
+============maven vedios====================
+https://www.youtube.com/watch?v=2ZWK87ws2tM
+https://www.youtube.com/watch?v=g8tyXC0fCd8
+https://www.youtube.com/watch?v=OpIE9qRhXl8
+https://www.youtube.com/watch?v=WccmV8_MeC8
+
+
+### spring Tx mgmt vedios ####
+=============================
+https://youtu.be/tn7oXoXAKfI
+https://youtu.be/68R_a2lmlII
+https://youtu.be/nD_86olXt1I
+https://youtu.be/5MNnR-EnJ6A
+https://youtu.be/fePDtdnuQe0
+https://youtu.be/e5chgAoS6pc
+https://youtu.be/nMfEM1wTULg
+
+https://youtu.be/dg9aXbc2MKk-->29
+https://youtu.be/-yH5cwcWjaA
+https://youtu.be/8xxv4u-co2A
+https://youtu.be/gdc_ICB7vE8
+https://youtu.be/cgZ_tus_g8k
+https://youtu.be/KwRjaI-EZeU
+
+
+==== GIT hub playlist ===========
+https://www.youtube.com/watch?v=_frCuw5JWdQ&list=PLVlQHNRLflP-C43xWt10PB3gKC8DDPB12
+
+
+
 
 
 

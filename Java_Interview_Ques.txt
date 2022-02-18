@@ -224,6 +224,58 @@ Conditions:
 14. implement linked list in java .
 
 
+++++++++++++++++++++++Global-Logic+++++++++++++++++++++++++++++
+
+1. What is an Immutable class?
+2. create custom Immutable class?
+3. Question on Multithreading
+4. Questin on Exception Handling
+5. Question how to resolve cyclic dependency in Spring
+6. @Qualifier Annotation in Spring
+7. What is @Primary in Spring
+8. What is @Lazy Annotation in java
+9. How to count how many numbers of Object is created for any class in multithreading envornment.
+10.SAOP VS REST (Which is best use-full for Mobile?)
+11.Serialization and SerialVersionUID
+12. Group the anagrams [god,dog][cat,act,tac]
+13. find the Employee whose salary is greater than the their Manager
+
+=============================Nagarro=====================
+how to find the length of a circular linked list
+Q.1. Why java is platform independent?
+Q.2. describe JRE,JDK and JVM.
+Q.3. explain Encapsulation, Abstraction, Polymorphism with real time examples.
+Q.4. difference between array and stack
+Q.5. Real time example of Stack
+Q.6. Describe Heap and heap sort with time complexity.
+Q.7. what is time Complexity? best and worst time complexity.
+Q.8. Explain how Merge sort works?
+Q.9. how was the level of coding questions?
+Q.10 In which memory are objects stores?
+Q.11 Which data Structure is used in e-Commerce Website?
+Q.12 Doubly Linked List. Why do we use it & its use case.
+Q.13 How do we achieve Encapsulation
+Q.14 Why do we use Pure Virtual function
+Q.15 solid, design principles,
+Q.16 Find all the sets from an array consisting of 1-9 numbers which sums up to 10
+Q.17 CompositeKey in Hibernate 
+Q.18 RunnableVsCallable
+Q.19 Trigger IN DB
+Q.20 @SpringComponent Vs @Resposiotry 
+Q.21 Difference in Scope of bean present in Service Class Vs Respository class.
+Q.22 How to handle Error?
+Q.23 Fieng Client Vs Discovery Client 
+Q.24 how Async Communication going in Microservices. 
+ 
+
+
+
+
+
+
+
+
+
 
 
 
