@@ -62,7 +62,7 @@
 62. how can we avoid deadlock
 63. Which algorithm used in garbage collections.
 64. what all design pattern involved in spring framework.
-65.  difference between get() and load() in hibernate
+65. difference between get() and load() in hibernate
 66. difference between persist() and save()
 67. what is criterian in hibernate
 68. difference between primary and secondary level cache
@@ -266,7 +266,25 @@ Q.21 Difference in Scope of bean present in Service Class Vs Respository class.
 Q.22 How to handle Error?
 Q.23 Fieng Client Vs Discovery Client 
 Q.24 how Async Communication going in Microservices. 
- 
+Q.25 What is String intern()?
+Q.26 how we disable the actutors endpoints?  endpoints.enabled = false;
+Q.27 
+
+OutputQ
+
+for(int i=0;1;i++){
+System.out.println("welcome");
+break;
+}
+//Comiple time error:not convert int to boolean
+for(int i=0;true;i++){
+System.out.println("welcome");
+break;
+}
+
+//Run Perfectly
+
+
 
 
 

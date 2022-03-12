@@ -1,5 +1,8 @@
  
 
+==Dynamic Servlet Resgistration =====
+https://www.youtube.com/watch?v=aRscgj17HuI
+
 ======java Bean=======
 https://www.youtube.com/watch?v=io2TciOcF2Y
 https://www.youtube.com/watch?v=GOvak6awDrI&t=161s
